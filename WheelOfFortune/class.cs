@@ -163,7 +163,7 @@ namespace WheelOfFortune
             gameEnd = false;
             guessedLetter = 0;
             rate = 0;
-            hint = new string[] {"Click the wheel to spin." ,"Buy a vowel or spin the wheel.", "Play for "+rate, "Bankrupt. You've lost everything!", "That letter is not in the word."};
+            hint = new string[] {"Click the wheel to spin." ,"Buy a vowel or spin the wheel.", "Play for $" + rate, "Bankrupt. You've lost everything!", "That letter is not in the word."};
         }
 
         public void statusCheck()

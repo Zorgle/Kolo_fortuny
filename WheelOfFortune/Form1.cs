@@ -23,6 +23,9 @@ namespace WheelOfFortune
 
         Game game;
         Player player1;
+        Player player2;
+        Player player3;
+        Player currentplayer;
 
         public Form1()
         {
@@ -31,7 +34,10 @@ namespace WheelOfFortune
             wheelofFortune = new Wheel();
             secretWord = new SecretWord(words[wordIndex]);
             word = new Word[secretWord.size];
-            player1 = new Player("player");
+            player1 = new Player("Player1");
+            player2 = new Player("Player2");
+            player3 = new Player("Player3");
+            currentplayer = player1;
             wheelIsMoved = false;
             wheelTimes = 100;
             InitializeComponent();
@@ -39,70 +45,73 @@ namespace WheelOfFortune
             wheelTimer = new Timer();
             wheelTimer.Interval = 10;
             wheelTimer.Tick += wheelTimer_Tick;
-            
+            lblPlayer1Name.Text = player1.name;
+            lblPlayer2Name.Text = player2.name;
+            lblPlayer3Name.Text = player3.name;
+
 
             button = new Button[26];
             vowel = new Button[6];
             consonant = new Button[20];
 
-            button[0] = button1;
-            button[1] = button3;
-            button[2] = button4;
-            button[3] = button6;
-            button[4] = button7;
-            button[5] = button9;
-            button[6] = button10;
-            button[7] = button11;
-            button[8] = button12;
-            button[9] = button13;
-            button[10] = button14;
-            button[11] = button15;
-            button[12] = button17;
-            button[13] = button18;
-            button[14] = button20;
-            button[15] = button22;
-            button[16] = button23;
-            button[17] = button24;
-            button[18] = button25;
-            button[19] = button27;
-            button[20] = button28;
-            button[21] = button29;
-            button[22] = button30;
-            button[23] = button31;
-            button[24] = button32;
-            button[25] = button33;
+            button[0] = btnA;
+            button[1] = btnB;
+            button[2] = btnC;
+            button[3] = btnD;
+            button[4] = btnE;
+            button[5] = btnF;
+            button[6] = btnG;
+            button[7] = btnH;
+            button[8] = btnI;
+            button[9] = btnJ;
+            button[10] = btnK;
+            button[11] = btnL;
+            button[12] = btnM;
+            button[13] = btnN;
+            button[14] = btnO;
+            button[15] = btnP;
+            button[16] = btnQ;
+            button[17] = btnR;
+            button[18] = btnS;
+            button[19] = btnT;
+            button[20] = btnU;
+            button[21] = btnV;
+            button[22] = btnW;
+            button[23] = btnX;
+            button[24] = btnY;
+            button[25] = btnZ;
 
-            vowel[0] = button1;
-            vowel[1] = button7;
-            vowel[2] = button12;
-            vowel[3] = button20;
-            vowel[4] = button28;
-            vowel[5] = button32;
+            vowel[0] = btnA;
+            vowel[1] = btnE;
+            vowel[2] = btnI;
+            vowel[3] = btnO;
+            vowel[4] = btnU;
+            vowel[5] = btnY;
 
 
 
-            consonant[0] = button3;
-            consonant[1] = button4;
-            consonant[2] = button6;
-            consonant[3] = button9;
-            consonant[4] = button10;
-            consonant[5] = button11;
-            consonant[6] = button13;
-            consonant[7] = button14;
-            consonant[8] = button15;
-            consonant[9] = button17;
-            consonant[10] = button18;
-            consonant[11] = button22;
-            consonant[12] = button23;
-            consonant[13] = button24;
-            consonant[14] = button25;
-            consonant[15] = button27;
-            consonant[16] = button29;
-            consonant[17] = button30;
-            consonant[18] = button31;
-            consonant[19] = button33;
+            consonant[0] = btnB;
+            consonant[1] = btnC;
+            consonant[2] = btnD;
+            consonant[3] = btnF;
+            consonant[4] = btnG;
+            consonant[5] = btnH;
+            consonant[6] = btnJ;
+            consonant[7] = btnK;
+            consonant[8] = btnL;
+            consonant[9] = btnM;
+            consonant[10] = btnN;
+            consonant[11] = btnP;
+            consonant[12] = btnQ;
+            consonant[13] = btnR;
+            consonant[14] = btnS;
+            consonant[15] = btnT;
+            consonant[16] = btnV;
+            consonant[17] = btnW;
+            consonant[18] = btnX;
+            consonant[19] = btnZ;
 
-            for (int i = 0; i < 25; i++ )
+            for (int i = 0; i < 25; i++)
             {
                 button[i].IsAccessible = true;    //already chosen
                 button[i].Enabled = true;         //active flag
@@ -114,20 +123,19 @@ namespace WheelOfFortune
             gameTimer = new Timer();
             gameTimer.Interval = 100;
             gameTimer.Tick += gameTimer_Tick;
-            label4.Text = game.hint[0];
+            lblInfo.Text = game.hint[0];
 
             gameTimer.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
         }
 
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-           
 
         }
 
@@ -135,28 +143,28 @@ namespace WheelOfFortune
         {
             Boolean ifExist = false;
             Button chosenButton = (Button)sender;
-            for(int i=0; i<secretWord.size; i++ )
+            for (int i = 0; i < secretWord.size; i++)
             {
                 if ((secretWord.field[i].Text).Equals((chosenButton.Text)))
                 {
                     secretWord.field[i].UseSystemPasswordChar = false;
                     chosenButton.IsAccessible = false;
-                    
+
                     if (chosenButton.Text.Equals("A")
                         || chosenButton.Text.Equals("E")
                         || chosenButton.Text.Equals("I")
                         || chosenButton.Text.Equals("O")
                         || chosenButton.Text.Equals("U")
-                        || chosenButton.Text.Equals("Y") )
+                        || chosenButton.Text.Equals("Y"))
                     {
-                        player1.points -= 300;
-                        label6.Text = "$" + Convert.ToString(player1.points);
+                        currentplayer.points -= 300;
+                        lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
                     }
                     else
                     {
                         game.guessedLetter += 1;
-                        player1.points += game.rate;
-                        label6.Text = "$" + Convert.ToString(player1.points);
+                        currentplayer.points += game.rate;
+                        lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
                         game.step = 3;
                     }
 
@@ -165,23 +173,35 @@ namespace WheelOfFortune
                 }
             }
 
-            if( !ifExist )
+            if (!ifExist)
             {
-                label4.Text = game.hint[4];
+                lblInfo.Text = game.hint[4];
                 game.guessedLetter = 0;
                 game.step = 1;
+                if (currentplayer == player1)
+                {
+                    currentplayer = player2;
+                }
+                else if (currentplayer == player2)
+                {
+                    currentplayer = player3;
+                }
+                else
+                {
+                    currentplayer = player1;
+                }
             }
 
         }
-        
+
         public Bitmap rotateImage()
         {
-            Bitmap rotatedImage = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            Bitmap rotatedImage = new Bitmap(pctWheel.Width, pctWheel.Height);
             using (Graphics g = Graphics.FromImage(rotatedImage))
             {
-                g.TranslateTransform((pictureBox1.Width / 2), pictureBox1.Height / 2); //set the rotation point as the center into the matrix
+                g.TranslateTransform((pctWheel.Width / 2), pctWheel.Height / 2); //set the rotation point as the center into the matrix
                 g.RotateTransform(wheelofFortune.angle); //rotate
-                g.TranslateTransform(-pictureBox1.Width / 2, -pictureBox1.Height / 2); //restore rotation point into the matrix
+                g.TranslateTransform(-pctWheel.Width / 2, -pctWheel.Height / 2); //restore rotation point into the matrix
                 g.DrawImage(wheelofFortune.tempPicture, new Point(0, 0)); //draw the image on the new bitmap
             }
             return rotatedImage;
@@ -234,13 +254,13 @@ namespace WheelOfFortune
 
         private void wheelTimer_Tick(object sender, EventArgs e)
         {
-            label4.Visible = false;
+            lblInfo.Visible = false;
 
             if (wheelIsMoved && wheelTimes > 0)
             {
-                wheelofFortune.angle += wheelTimes/10;
+                wheelofFortune.angle += wheelTimes / 10;
                 wheelofFortune.angle = wheelofFortune.angle % 360;
-                RotateImage(pictureBox1, wheelofFortune.picture, wheelofFortune.angle);
+                RotateImage(pctWheel, wheelofFortune.picture, wheelofFortune.angle);
                 wheelTimes--;
             }
 
@@ -255,9 +275,9 @@ namespace WheelOfFortune
                 wheelofFortune.state -= 1;
             }
 
-            label1.Text = Convert.ToString(wheelofFortune.angle);
-            label2.Text = Convert.ToString(wheelofFortune.state);
-            label3.Text = Convert.ToString(wheelofFortune.wheelState[wheelofFortune.state]);
+            lblState.Text = Convert.ToString(wheelofFortune.angle);
+            lblAngle.Text = Convert.ToString(wheelofFortune.state);
+            lblWheelValue.Text = Convert.ToString(wheelofFortune.wheelState[wheelofFortune.state]);
 
             game.rate = wheelofFortune.wheelState[wheelofFortune.state];
             game.hint[2] = "Playing for $" + game.rate + ".";
@@ -266,7 +286,7 @@ namespace WheelOfFortune
             {
                 wheelIsMoved = false;
 
-                for (int i = 0; i < button.Length;i++ )
+                for (int i = 0; i < button.Length; i++)
                 {
                     if (button[i].IsAccessible)
                     {
@@ -274,9 +294,9 @@ namespace WheelOfFortune
                     }
                 }
 
-                if(wheelofFortune.wheelState[wheelofFortune.state] == 0)
+                if (wheelofFortune.wheelState[wheelofFortune.state] == 0)
                 {
-                    player1.points = 0;
+                    currentplayer.points = 0;
                     game.step = 1;
                 }
                 else
@@ -304,18 +324,18 @@ namespace WheelOfFortune
                     break;
             }
 
-            if(secretWord.value>0 && secretWord.value == secretWord.size)
+            if (secretWord.value > 0 && secretWord.value == secretWord.size)
             {
-                player1.guessedWord = true;
-                secretWord.value =0;
+                currentplayer.guessedWord = true;
+                secretWord.value = 0;
             }
 
-            if(player1.guessedWord)
+            if (currentplayer.guessedWord)
             {
                 gameTimer.Stop();
 
-                if (DialogResult.OK == MessageBox.Show("You Win! You have won $" + player1.points + ". Play Again? ", "Alert"
-                              , MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
+                if (DialogResult.OK == MessageBox.Show(currentplayer.name + " wins! You have won $" + currentplayer.points + ". Play Again? ", "Alert"
+                              , MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
                     System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
                     this.Close();
@@ -324,17 +344,47 @@ namespace WheelOfFortune
                 {
                     System.Windows.Forms.Application.Exit();
                 }
-                player1.guessedWord = false;
-
+                currentplayer.guessedWord = false;
             }
+            if (player2.guessedWord)
+            {
+                gameTimer.Stop();
 
+                if (DialogResult.OK == MessageBox.Show(player2.name + " wins! You have won $" + player2.points + ". Play Again? ", "Alert"
+                              , MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
+                    this.Close();
+                }
+                else
+                {
+                    System.Windows.Forms.Application.Exit();
+                }
+                player2.guessedWord = false;
+            }
+            if (player3.guessedWord)
+            {
+                gameTimer.Stop();
+
+                if (DialogResult.OK == MessageBox.Show(player3.name + " wins! You have won $" + player3.points + ". Play Again? ", "Alert"
+                              , MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
+                    this.Close();
+                }
+                else
+                {
+                    System.Windows.Forms.Application.Exit();
+                }
+                player3.guessedWord = false;
+            }
         }
 
         public void step1()
         {
-            label4.Visible = true;
-            
-            pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            lblInfo.Visible = true;
+
+            pctWheel.Click += new System.EventHandler(this.pictureBox1_Click);
 
             for (int i = 0; i < button.Length; i++)
             {
@@ -345,47 +395,45 @@ namespace WheelOfFortune
 
         public void step2()
         {
-            label4.Visible = true;
-            label4.Text = game.hint[2];
-            pictureBox1.Click -= new System.EventHandler(this.pictureBox1_Click);
+            lblInfo.Visible = true;
+            lblInfo.Text = game.hint[2];
+            pctWheel.Click -= new System.EventHandler(this.pictureBox1_Click);
 
-
-                    for (int i = 0; i < vowel.Length; i++)
-                    {
-                         if (vowel[i].IsAccessible)
-                         {
-                             vowel[i].Enabled = false;
-                         }
-                    
-                    } 
+            for (int i = 0; i < vowel.Length; i++)
+            {
+                if (vowel[i].IsAccessible)
+                {
+                    vowel[i].Enabled = false;
+                }
+            }
 
 
             for (int i = 0; i < consonant.Length; i++)
             {
-                if(consonant[i].IsAccessible)
+                if (consonant[i].IsAccessible)
                 {
-                   consonant[i].Enabled = true;
-                   consonant[i].Visible = true;
+                    consonant[i].Enabled = true;
+                    consonant[i].Visible = true;
                 }
                 else
                 {
-                   consonant[i].Enabled = false;
-                   consonant[i].Visible = false;
+                    consonant[i].Enabled = false;
+                    consonant[i].Visible = false;
                 }
             }
 
-           
+
         }
 
         public void etap3()
         {
-            label4.Text = game.hint[1];
-            pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            lblInfo.Text = game.hint[1];
+            pctWheel.Click += new System.EventHandler(this.pictureBox1_Click);
 
             for (int i = 0; i < consonant.Length; i++) consonant[i].Enabled = false;
 
 
-            if (player1.points >= 300)
+            if (currentplayer.points >= 300)
             {
                 for (int i = 0; i < vowel.Length; i++) vowel[i].Enabled = true;
             }
