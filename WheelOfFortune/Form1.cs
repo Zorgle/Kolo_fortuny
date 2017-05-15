@@ -46,6 +46,7 @@ namespace WheelOfFortune
             wheelTimer.Interval = 10;
             wheelTimer.Tick += wheelTimer_Tick;
             lblPlayer1Name.Text = player1.name;
+            lblPlayer1Name.ForeColor = Color.Red;
             lblPlayer2Name.Text = player2.name;
             lblPlayer3Name.Text = player3.name;
 
@@ -158,13 +159,44 @@ namespace WheelOfFortune
                         || chosenButton.Text.Equals("Y"))
                     {
                         currentplayer.points -= 300;
-                        lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
+                        if(currentplayer == player1)
+                        {
+                            lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
+                            lblPlayer1Name.ForeColor = Color.Red;
+                            lblPlayer2Name.ForeColor = Color.Black;
+                            lblPlayer3Name.ForeColor = Color.Black;
+                        }
+                        else if (currentplayer == player2)
+                        {
+                            lblScore2.Text = "$" + Convert.ToString(currentplayer.points);
+                            lblPlayer1Name.ForeColor = Color.Black;
+                            lblPlayer2Name.ForeColor = Color.Red;
+                            lblPlayer3Name.ForeColor = Color.Black;
+                        }
+                        else if (currentplayer == player3)
+                        {
+                            lblScore3.Text = "$" + Convert.ToString(currentplayer.points);
+                            lblPlayer1Name.ForeColor = Color.Black;
+                            lblPlayer2Name.ForeColor = Color.Black;
+                            lblPlayer3Name.ForeColor = Color.Red;
+                        }
                     }
                     else
                     {
                         game.guessedLetter += 1;
                         currentplayer.points += game.rate;
-                        lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
+                        if (currentplayer == player1)
+                        {
+                            lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
+                        }
+                        else if (currentplayer == player2)
+                        {
+                            lblScore2.Text = "$" + Convert.ToString(currentplayer.points);
+                        }
+                        else if (currentplayer == player3)
+                        {
+                            lblScore3.Text = "$" + Convert.ToString(currentplayer.points);
+                        }
                         game.step = 3;
                     }
 
@@ -178,18 +210,7 @@ namespace WheelOfFortune
                 lblInfo.Text = game.hint[4];
                 game.guessedLetter = 0;
                 game.step = 1;
-                if (currentplayer == player1)
-                {
-                    currentplayer = player2;
-                }
-                else if (currentplayer == player2)
-                {
-                    currentplayer = player3;
-                }
-                else
-                {
-                    currentplayer = player1;
-                }
+                incrementPlayer(currentplayer);
             }
 
         }
@@ -296,7 +317,16 @@ namespace WheelOfFortune
 
                 if (wheelofFortune.wheelState[wheelofFortune.state] == 0)
                 {
+                    lblInfo.Text = game.hint[3];
                     currentplayer.points = 0;
+                    redrawPoints();
+                    incrementPlayer(currentplayer);
+                    game.step = 1;
+                }
+                else if (wheelofFortune.wheelState[wheelofFortune.state] == -1)
+                {
+                    lblInfo.Text = game.hint[5];
+                    incrementPlayer(currentplayer);
                     game.step = 1;
                 }
                 else
@@ -305,6 +335,44 @@ namespace WheelOfFortune
                 }
 
                 wheelTimer.Stop();
+            }
+        }
+        private void redrawPoints()
+        {
+            lblScore1.Text = player1.points.ToString();
+            lblScore2.Text = player2.points.ToString();
+            lblScore3.Text = player3.points.ToString();
+        }
+
+        private Player incrementPlayer(Player passedPlayer)
+        {
+            if (passedPlayer == player1)
+            {
+                lblPlayer1Name.ForeColor = Color.Black;
+                lblPlayer2Name.ForeColor = Color.Red;
+                lblPlayer3Name.ForeColor = Color.Black;
+                currentplayer = player2;
+                return player2;
+            }
+            else if (passedPlayer == player2)
+            {
+                lblPlayer1Name.ForeColor = Color.Black;
+                lblPlayer2Name.ForeColor = Color.Black;
+                lblPlayer3Name.ForeColor = Color.Red;
+                currentplayer = player3;
+                return player3;
+            }
+            else if (passedPlayer == player3)
+            {
+                lblPlayer1Name.ForeColor = Color.Red;
+                lblPlayer2Name.ForeColor = Color.Black;
+                lblPlayer3Name.ForeColor = Color.Black;
+                currentplayer = player1;
+                return player1;
+            }
+            else
+            {
+                return player1;
             }
         }
 
@@ -320,7 +388,7 @@ namespace WheelOfFortune
                     step2();
                     break;
                 case 3:
-                    etap3();
+                    step3();
                     break;
             }
 
@@ -334,7 +402,7 @@ namespace WheelOfFortune
             {
                 gameTimer.Stop();
 
-                if (DialogResult.OK == MessageBox.Show(currentplayer.name + " wins! You have won $" + currentplayer.points + ". Play Again? ", "Alert"
+                if (DialogResult.Yes == MessageBox.Show(currentplayer.name + " wins! You have won $" + currentplayer.points + ". Play Again? ", "Alert"
                               , MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
                     System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
@@ -350,7 +418,7 @@ namespace WheelOfFortune
             {
                 gameTimer.Stop();
 
-                if (DialogResult.OK == MessageBox.Show(player2.name + " wins! You have won $" + player2.points + ". Play Again? ", "Alert"
+                if (DialogResult.Yes == MessageBox.Show(player2.name + " wins! You have won $" + player2.points + ". Play Again? ", "Alert"
                               , MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
                     System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
@@ -366,7 +434,7 @@ namespace WheelOfFortune
             {
                 gameTimer.Stop();
 
-                if (DialogResult.OK == MessageBox.Show(player3.name + " wins! You have won $" + player3.points + ". Play Again? ", "Alert"
+                if (DialogResult.Yes == MessageBox.Show(player3.name + " wins! You have won $" + player3.points + ". Play Again? ", "Alert"
                               , MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
                     System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
@@ -425,7 +493,7 @@ namespace WheelOfFortune
 
         }
 
-        public void etap3()
+        public void step3()
         {
             lblInfo.Text = game.hint[1];
             pctWheel.Click += new System.EventHandler(this.pictureBox1_Click);
