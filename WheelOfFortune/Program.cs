@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Drawing;
 
 
-namespace Kolo_fortuny
+namespace WheelOfFortune
 {
     static class Program
     {
