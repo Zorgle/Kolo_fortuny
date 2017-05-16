@@ -17,7 +17,7 @@ namespace WheelOfFortune
         Button[] button;
         Button[] vowel;
         Button[] consonant;
-        String[] words = { "BANANA", "APPLE", "WATERMELON", "SQUASH", "WORDS" };
+        String[] words = { "TESTING SPACES", "THIS WORKS OK", "MORE SPACE TESTING"};
         Random rand;
         int wordIndex;
 
@@ -131,7 +131,13 @@ namespace WheelOfFortune
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < secretWord.size; i++)
+            {
+                if ((secretWord.field[i].Text).Contains(" "))
+                {
+                    handleButton(btnSpace, e);
+                }
+            }
         }
 
 
@@ -158,8 +164,8 @@ namespace WheelOfFortune
                         || chosenButton.Text.Equals("U")
                         || chosenButton.Text.Equals("Y"))
                     {
-                        currentplayer.points -= 300;
-                        if(currentplayer == player1)
+                        currentplayer.points -= 125;
+                        if (currentplayer == player1)
                         {
                             lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
                             lblPlayer1Name.ForeColor = Color.Red;
@@ -344,6 +350,14 @@ namespace WheelOfFortune
             lblScore3.Text = player3.points.ToString();
         }
 
+        private void solvePuzzle()
+        {
+            if (currentplayer == player1)
+            {
+
+            }
+        }
+
         private Player incrementPlayer(Player passedPlayer)
         {
             if (passedPlayer == player1)
@@ -475,7 +489,6 @@ namespace WheelOfFortune
                 }
             }
 
-
             for (int i = 0; i < consonant.Length; i++)
             {
                 if (consonant[i].IsAccessible)
@@ -489,8 +502,6 @@ namespace WheelOfFortune
                     consonant[i].Visible = false;
                 }
             }
-
-
         }
 
         public void step3()
@@ -501,7 +512,7 @@ namespace WheelOfFortune
             for (int i = 0; i < consonant.Length; i++) consonant[i].Enabled = false;
 
 
-            if (currentplayer.points >= 300)
+            if (currentplayer.points >= 125)
             {
                 for (int i = 0; i < vowel.Length; i++) vowel[i].Enabled = true;
             }

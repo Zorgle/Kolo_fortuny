@@ -77,20 +77,10 @@ namespace WheelOfFortune
             this.lblPlayer2Name = new System.Windows.Forms.Label();
             this.lblPlayer3Name = new System.Windows.Forms.Label();
             this.btnA = new System.Windows.Forms.Button();
+            this.btnSpace = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctWheel)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnA
-            // 
-            this.btnA.ForeColor = System.Drawing.Color.Red;
-            this.btnA.Location = new System.Drawing.Point(12, 249);
-            this.btnA.Name = "btnA";
-            this.btnA.Size = new System.Drawing.Size(75, 23);
-            this.btnA.TabIndex = 18;
-            this.btnA.Text = "A";
-            this.btnA.UseVisualStyleBackColor = true;
-            this.btnA.Click += new System.EventHandler(this.handleButton);
             // 
             // btnB
             // 
@@ -482,11 +472,33 @@ namespace WheelOfFortune
             this.lblPlayer3Name.TabIndex = 17;
             this.lblPlayer3Name.Text = "Player3";
             // 
+            // btnA
+            // 
+            this.btnA.ForeColor = System.Drawing.Color.Red;
+            this.btnA.Location = new System.Drawing.Point(12, 249);
+            this.btnA.Name = "btnA";
+            this.btnA.Size = new System.Drawing.Size(75, 23);
+            this.btnA.TabIndex = 18;
+            this.btnA.Text = "A";
+            this.btnA.UseVisualStyleBackColor = true;
+            this.btnA.Click += new System.EventHandler(this.handleButton);
+            // 
+            // btnSpace
+            // 
+            this.btnSpace.Location = new System.Drawing.Point(174, 365);
+            this.btnSpace.Name = "btnSpace";
+            this.btnSpace.Size = new System.Drawing.Size(75, 23);
+            this.btnSpace.TabIndex = 19;
+            this.btnSpace.Text = " ";
+            this.btnSpace.UseVisualStyleBackColor = true;
+            this.btnSpace.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 641);
+            this.Controls.Add(this.btnSpace);
             this.Controls.Add(this.btnA);
             this.Controls.Add(this.lblPlayer3Name);
             this.Controls.Add(this.lblPlayer2Name);
@@ -586,6 +598,7 @@ namespace WheelOfFortune
         private Label lblPlayer1Name;
         private Label lblPlayer2Name;
         private Label lblPlayer3Name;
+        private Button btnSpace;
     }
 }
 
