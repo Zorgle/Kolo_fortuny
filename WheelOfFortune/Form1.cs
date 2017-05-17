@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace WheelOfFortune
 {
@@ -17,7 +18,7 @@ namespace WheelOfFortune
         Button[] button;
         Button[] vowel;
         Button[] consonant;
-        String[] words = { "TESTING SPACES", "THIS WORKS OK", "MORE SPACE TESTING"};
+        String[] words = { "Asherons Call", "Lady Aerfalle", "Dark Sorcerers Phylactery",  "Globe of Auberean", "Hells Wrath"};
         Random rand;
         int wordIndex;
 
@@ -132,13 +133,8 @@ namespace WheelOfFortune
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < secretWord.size; i++)
-            {
-                if ((secretWord.field[i].Text).Contains(" "))
-                {
-                    handleButton(btnSpace, e);
-                }
-            }
+            handleButton(btnSpace, e);
+            lblInfo.Text = game.hint[1];
         }
 
 
@@ -153,7 +149,7 @@ namespace WheelOfFortune
             Button chosenButton = (Button)sender;
             for (int i = 0; i < secretWord.size; i++)
             {
-                if ((secretWord.field[i].Text).Equals((chosenButton.Text)))
+                if ((secretWord.field[i].Text.ToUpper()).Equals((chosenButton.Text.ToUpper())))
                 {
                     secretWord.field[i].UseSystemPasswordChar = false;
                     chosenButton.IsAccessible = false;
@@ -353,9 +349,10 @@ namespace WheelOfFortune
 
         private void solvePuzzle()
         {
-            if (currentplayer == player1)
+            string guess = Interaction.InputBox(currentplayer.name + " would like to solve the Puzzle?", "Solve the Puzzle", "answer");
+            if (guess.ToLower() == secretWord.password.ToLower())
             {
-
+                currentplayer.guessedWord = true;
             }
         }
 
@@ -544,6 +541,11 @@ namespace WheelOfFortune
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void btnSolve_Click(object sender, EventArgs e)
+        {
+            solvePuzzle();
         }
     }
 }

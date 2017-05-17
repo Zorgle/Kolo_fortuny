@@ -85,6 +85,7 @@ namespace WheelOfFortune
             // 
             // btnB
             // 
+            this.btnB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnB.Location = new System.Drawing.Point(93, 249);
             this.btnB.Name = "btnB";
             this.btnB.Size = new System.Drawing.Size(75, 23);
@@ -95,6 +96,7 @@ namespace WheelOfFortune
             // 
             // btnC
             // 
+            this.btnC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnC.Location = new System.Drawing.Point(174, 249);
             this.btnC.Name = "btnC";
             this.btnC.Size = new System.Drawing.Size(75, 23);
@@ -105,6 +107,7 @@ namespace WheelOfFortune
             // 
             // btnD
             // 
+            this.btnD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnD.Location = new System.Drawing.Point(255, 249);
             this.btnD.Name = "btnD";
             this.btnD.Size = new System.Drawing.Size(75, 23);
@@ -115,6 +118,7 @@ namespace WheelOfFortune
             // 
             // btnE
             // 
+            this.btnE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnE.ForeColor = System.Drawing.Color.Red;
             this.btnE.Location = new System.Drawing.Point(336, 249);
             this.btnE.Name = "btnE";
@@ -126,6 +130,7 @@ namespace WheelOfFortune
             // 
             // btnF
             // 
+            this.btnF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnF.Location = new System.Drawing.Point(417, 249);
             this.btnF.Name = "btnF";
             this.btnF.Size = new System.Drawing.Size(75, 23);
@@ -136,6 +141,7 @@ namespace WheelOfFortune
             // 
             // btnG
             // 
+            this.btnG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnG.Location = new System.Drawing.Point(12, 278);
             this.btnG.Name = "btnG";
             this.btnG.Size = new System.Drawing.Size(75, 23);
@@ -146,6 +152,7 @@ namespace WheelOfFortune
             // 
             // btnH
             // 
+            this.btnH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnH.Location = new System.Drawing.Point(93, 278);
             this.btnH.Name = "btnH";
             this.btnH.Size = new System.Drawing.Size(75, 23);
@@ -156,6 +163,7 @@ namespace WheelOfFortune
             // 
             // btnI
             // 
+            this.btnI.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnI.ForeColor = System.Drawing.Color.Red;
             this.btnI.Location = new System.Drawing.Point(174, 278);
             this.btnI.Name = "btnI";
@@ -167,6 +175,7 @@ namespace WheelOfFortune
             // 
             // btnJ
             // 
+            this.btnJ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnJ.Location = new System.Drawing.Point(255, 278);
             this.btnJ.Name = "btnJ";
             this.btnJ.Size = new System.Drawing.Size(75, 23);
@@ -177,6 +186,7 @@ namespace WheelOfFortune
             // 
             // btnK
             // 
+            this.btnK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnK.Location = new System.Drawing.Point(336, 278);
             this.btnK.Name = "btnK";
             this.btnK.Size = new System.Drawing.Size(75, 23);
@@ -187,6 +197,7 @@ namespace WheelOfFortune
             // 
             // btnL
             // 
+            this.btnL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnL.Location = new System.Drawing.Point(417, 278);
             this.btnL.Name = "btnL";
             this.btnL.Size = new System.Drawing.Size(75, 23);
@@ -197,6 +208,7 @@ namespace WheelOfFortune
             // 
             // btnM
             // 
+            this.btnM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnM.Location = new System.Drawing.Point(12, 307);
             this.btnM.Name = "btnM";
             this.btnM.Size = new System.Drawing.Size(75, 23);
@@ -207,6 +219,7 @@ namespace WheelOfFortune
             // 
             // btnN
             // 
+            this.btnN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnN.Location = new System.Drawing.Point(93, 307);
             this.btnN.Name = "btnN";
             this.btnN.Size = new System.Drawing.Size(75, 23);
@@ -217,6 +230,7 @@ namespace WheelOfFortune
             // 
             // btnO
             // 
+            this.btnO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnO.ForeColor = System.Drawing.Color.Red;
             this.btnO.Location = new System.Drawing.Point(174, 307);
             this.btnO.Name = "btnO";
@@ -228,6 +242,7 @@ namespace WheelOfFortune
             // 
             // btnP
             // 
+            this.btnP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnP.Location = new System.Drawing.Point(255, 307);
             this.btnP.Name = "btnP";
             this.btnP.Size = new System.Drawing.Size(75, 23);
@@ -238,6 +253,7 @@ namespace WheelOfFortune
             // 
             // btnQ
             // 
+            this.btnQ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnQ.Location = new System.Drawing.Point(336, 307);
             this.btnQ.Name = "btnQ";
             this.btnQ.Size = new System.Drawing.Size(75, 23);
@@ -248,6 +264,7 @@ namespace WheelOfFortune
             // 
             // btnR
             // 
+            this.btnR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnR.Location = new System.Drawing.Point(417, 307);
             this.btnR.Name = "btnR";
             this.btnR.Size = new System.Drawing.Size(75, 23);
@@ -258,6 +275,7 @@ namespace WheelOfFortune
             // 
             // btnS
             // 
+            this.btnS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnS.Location = new System.Drawing.Point(12, 336);
             this.btnS.Name = "btnS";
             this.btnS.Size = new System.Drawing.Size(75, 23);
@@ -268,6 +286,7 @@ namespace WheelOfFortune
             // 
             // btnT
             // 
+            this.btnT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnT.Location = new System.Drawing.Point(93, 336);
             this.btnT.Name = "btnT";
             this.btnT.Size = new System.Drawing.Size(75, 23);
@@ -278,6 +297,7 @@ namespace WheelOfFortune
             // 
             // btnU
             // 
+            this.btnU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnU.ForeColor = System.Drawing.Color.Red;
             this.btnU.Location = new System.Drawing.Point(174, 336);
             this.btnU.Name = "btnU";
@@ -289,6 +309,7 @@ namespace WheelOfFortune
             // 
             // btnV
             // 
+            this.btnV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnV.Location = new System.Drawing.Point(255, 336);
             this.btnV.Name = "btnV";
             this.btnV.Size = new System.Drawing.Size(75, 23);
@@ -299,6 +320,7 @@ namespace WheelOfFortune
             // 
             // btnW
             // 
+            this.btnW.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnW.Location = new System.Drawing.Point(336, 336);
             this.btnW.Name = "btnW";
             this.btnW.Size = new System.Drawing.Size(75, 23);
@@ -309,6 +331,7 @@ namespace WheelOfFortune
             // 
             // btnX
             // 
+            this.btnX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX.Location = new System.Drawing.Point(417, 336);
             this.btnX.Name = "btnX";
             this.btnX.Size = new System.Drawing.Size(75, 23);
@@ -319,6 +342,7 @@ namespace WheelOfFortune
             // 
             // btnY
             // 
+            this.btnY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnY.ForeColor = System.Drawing.Color.Red;
             this.btnY.Location = new System.Drawing.Point(12, 365);
             this.btnY.Name = "btnY";
@@ -362,6 +386,7 @@ namespace WheelOfFortune
             // 
             // lblInfo
             // 
+            this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.Location = new System.Drawing.Point(169, 493);
@@ -372,6 +397,7 @@ namespace WheelOfFortune
             // 
             // lblPoints
             // 
+            this.lblPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPoints.AutoSize = true;
             this.lblPoints.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPoints.Location = new System.Drawing.Point(555, 9);
@@ -443,6 +469,7 @@ namespace WheelOfFortune
             // 
             // lblPlayer1Name
             // 
+            this.lblPlayer1Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPlayer1Name.AutoSize = true;
             this.lblPlayer1Name.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayer1Name.Location = new System.Drawing.Point(644, 9);
@@ -453,6 +480,7 @@ namespace WheelOfFortune
             // 
             // lblPlayer2Name
             // 
+            this.lblPlayer2Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPlayer2Name.AutoSize = true;
             this.lblPlayer2Name.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayer2Name.Location = new System.Drawing.Point(644, 37);
@@ -463,6 +491,7 @@ namespace WheelOfFortune
             // 
             // lblPlayer3Name
             // 
+            this.lblPlayer3Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPlayer3Name.AutoSize = true;
             this.lblPlayer3Name.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayer3Name.Location = new System.Drawing.Point(644, 63);
@@ -473,6 +502,7 @@ namespace WheelOfFortune
             // 
             // btnA
             // 
+            this.btnA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnA.ForeColor = System.Drawing.Color.Red;
             this.btnA.Location = new System.Drawing.Point(12, 249);
             this.btnA.Name = "btnA";
@@ -484,6 +514,7 @@ namespace WheelOfFortune
             // 
             // btnSpace
             // 
+            this.btnSpace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSpace.Location = new System.Drawing.Point(174, 365);
             this.btnSpace.Name = "btnSpace";
             this.btnSpace.Size = new System.Drawing.Size(75, 23);
@@ -494,6 +525,7 @@ namespace WheelOfFortune
             // 
             // btnZ
             // 
+            this.btnZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnZ.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnZ.Location = new System.Drawing.Point(93, 365);
             this.btnZ.Name = "btnZ";
@@ -505,12 +537,14 @@ namespace WheelOfFortune
             // 
             // btnSolve
             // 
+            this.btnSolve.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSolve.Location = new System.Drawing.Point(870, 223);
             this.btnSolve.Name = "btnSolve";
             this.btnSolve.Size = new System.Drawing.Size(75, 23);
             this.btnSolve.TabIndex = 20;
             this.btnSolve.Text = "Solve";
             this.btnSolve.UseVisualStyleBackColor = true;
+            this.btnSolve.Click += new System.EventHandler(this.btnSolve_Click);
             // 
             // Form1
             // 
@@ -560,6 +594,7 @@ namespace WheelOfFortune
             this.Controls.Add(this.btnB);
             this.Name = "Form1";
             this.Text = "Wheel of Fortune";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -47,13 +47,20 @@ namespace WheelOfFortune
             field = new Word[s.Length];
             size = s.Length;
             password = s;
-
+            int y = 120;
+            int x = 0;
             for (int i = 0; i < field.Length; i++)
             {
+                if (Convert.ToString(password[i]) == " ")
+                {
+                    y = y + 120;
+                    x = 0;
+                }
+                x++;
                 field[i] = new Word();
                 field[i].Name = "Letter " + i;
-                field[i].Location = new Point(60 * i + 80, 120);
-                field[i].Text = Convert.ToString(password[i]);      
+                field[i].Location = new Point(60 * x + 80, y);
+                field[i].Text = Convert.ToString(password[i]);
             }
         }
     }   
