@@ -78,6 +78,7 @@ namespace WheelOfFortune
             this.btnA = new System.Windows.Forms.Button();
             this.btnSpace = new System.Windows.Forms.Button();
             this.btnZ = new System.Windows.Forms.Button();
+            this.btnSolve = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctWheel)).BeginInit();
             this.SuspendLayout();
@@ -329,6 +330,7 @@ namespace WheelOfFortune
             // 
             // lblState
             // 
+            this.lblState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblState.AutoSize = true;
             this.lblState.Location = new System.Drawing.Point(910, 249);
             this.lblState.Name = "lblState";
@@ -339,6 +341,7 @@ namespace WheelOfFortune
             // 
             // lblAngle
             // 
+            this.lblAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAngle.AutoSize = true;
             this.lblAngle.Location = new System.Drawing.Point(851, 249);
             this.lblAngle.Name = "lblAngle";
@@ -349,6 +352,7 @@ namespace WheelOfFortune
             // 
             // lblWheelValue
             // 
+            this.lblWheelValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblWheelValue.AutoSize = true;
             this.lblWheelValue.Location = new System.Drawing.Point(810, 249);
             this.lblWheelValue.Name = "lblWheelValue";
@@ -378,16 +382,18 @@ namespace WheelOfFortune
             // 
             // lblScore1
             // 
+            this.lblScore1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblScore1.AutoSize = true;
             this.lblScore1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblScore1.Location = new System.Drawing.Point(908, 9);
+            this.lblScore1.Location = new System.Drawing.Point(849, 6);
             this.lblScore1.Name = "lblScore1";
-            this.lblScore1.Size = new System.Drawing.Size(23, 26);
+            this.lblScore1.Size = new System.Drawing.Size(34, 26);
             this.lblScore1.TabIndex = 12;
-            this.lblScore1.Text = "0";
+            this.lblScore1.Text = "$0";
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::WheelOfFortune.Properties.Resources.Red_Triangle;
             this.pictureBox2.InitialImage = global::WheelOfFortune.Properties.Resources.Red_Triangle;
@@ -399,6 +405,7 @@ namespace WheelOfFortune
             // 
             // pctWheel
             // 
+            this.pctWheel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pctWheel.BackColor = System.Drawing.Color.Transparent;
             this.pctWheel.Image = global::WheelOfFortune.Properties.Resources.wheel;
             this.pctWheel.InitialImage = global::WheelOfFortune.Properties.Resources.wheel;
@@ -414,23 +421,25 @@ namespace WheelOfFortune
             // 
             // lblScore2
             // 
+            this.lblScore2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblScore2.AutoSize = true;
             this.lblScore2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblScore2.Location = new System.Drawing.Point(908, 35);
+            this.lblScore2.Location = new System.Drawing.Point(849, 32);
             this.lblScore2.Name = "lblScore2";
-            this.lblScore2.Size = new System.Drawing.Size(23, 26);
+            this.lblScore2.Size = new System.Drawing.Size(34, 26);
             this.lblScore2.TabIndex = 13;
-            this.lblScore2.Text = "0";
+            this.lblScore2.Text = "$0";
             // 
             // lblScore3
             // 
+            this.lblScore3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblScore3.AutoSize = true;
             this.lblScore3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblScore3.Location = new System.Drawing.Point(908, 61);
+            this.lblScore3.Location = new System.Drawing.Point(849, 58);
             this.lblScore3.Name = "lblScore3";
-            this.lblScore3.Size = new System.Drawing.Size(23, 26);
+            this.lblScore3.Size = new System.Drawing.Size(34, 26);
             this.lblScore3.TabIndex = 14;
-            this.lblScore3.Text = "0";
+            this.lblScore3.Text = "$0";
             // 
             // lblPlayer1Name
             // 
@@ -494,11 +503,21 @@ namespace WheelOfFortune
             this.btnZ.UseVisualStyleBackColor = true;
             this.btnZ.Click += new System.EventHandler(this.handleButton);
             // 
+            // btnSolve
+            // 
+            this.btnSolve.Location = new System.Drawing.Point(870, 223);
+            this.btnSolve.Name = "btnSolve";
+            this.btnSolve.Size = new System.Drawing.Size(75, 23);
+            this.btnSolve.TabIndex = 20;
+            this.btnSolve.Text = "Solve";
+            this.btnSolve.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 641);
+            this.Controls.Add(this.btnSolve);
             this.Controls.Add(this.btnZ);
             this.Controls.Add(this.btnSpace);
             this.Controls.Add(this.btnA);
@@ -600,6 +619,7 @@ namespace WheelOfFortune
         private Label lblPlayer3Name;
         private Button btnSpace;
         private Button btnZ;
+        private Button btnSolve;
     }
 }
 
