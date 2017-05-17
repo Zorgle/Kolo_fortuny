@@ -18,7 +18,8 @@ namespace WheelOfFortune
         Button[] button;
         Button[] vowel;
         Button[] consonant;
-        String[] words = { "Asherons Call", "Lady Aerfalle", "Dark Sorcerers Phylactery",  "Globe of Auberean", "Hells Wrath"};
+        String[] words = { "ASHERONS CALL", "LADY AERFALLE", "DARK SORCERERS PHYLACTERY",  "GLOBE OF AUBEREAN", "HELLS WRATH"};
+        String[] category = { "AC", "Bosses", "Items", "Items", "Players" };
         Random rand;
         int wordIndex;
 
@@ -43,6 +44,7 @@ namespace WheelOfFortune
             wheelTimes = 100;
             InitializeComponent();
             drawSecretWord();
+            lblCategory.Text = "Category: " + category[wordIndex];
             wheelTimer = new Timer();
             wheelTimer.Interval = 10;
             wheelTimer.Tick += wheelTimer_Tick;
