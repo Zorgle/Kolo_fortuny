@@ -62,7 +62,6 @@ namespace WheelOfFortune
             this.btnW = new System.Windows.Forms.Button();
             this.btnX = new System.Windows.Forms.Button();
             this.btnY = new System.Windows.Forms.Button();
-            this.btnZ = new System.Windows.Forms.Button();
             this.lblState = new System.Windows.Forms.Label();
             this.lblAngle = new System.Windows.Forms.Label();
             this.lblWheelValue = new System.Windows.Forms.Label();
@@ -78,6 +77,7 @@ namespace WheelOfFortune
             this.lblPlayer3Name = new System.Windows.Forms.Label();
             this.btnA = new System.Windows.Forms.Button();
             this.btnSpace = new System.Windows.Forms.Button();
+            this.btnZ = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctWheel)).BeginInit();
             this.SuspendLayout();
@@ -327,16 +327,6 @@ namespace WheelOfFortune
             this.btnY.UseVisualStyleBackColor = true;
             this.btnY.Click += new System.EventHandler(this.handleButton);
             // 
-            // btnZ
-            // 
-            this.btnZ.Location = new System.Drawing.Point(93, 365);
-            this.btnZ.Name = "btnZ";
-            this.btnZ.Size = new System.Drawing.Size(75, 23);
-            this.btnZ.TabIndex = 8;
-            this.btnZ.Text = "Z";
-            this.btnZ.UseVisualStyleBackColor = true;
-            this.btnZ.Click += new System.EventHandler(this.handleButton);
-            // 
             // lblState
             // 
             this.lblState.AutoSize = true;
@@ -493,11 +483,23 @@ namespace WheelOfFortune
             this.btnSpace.UseVisualStyleBackColor = true;
             this.btnSpace.Visible = false;
             // 
+            // btnZ
+            // 
+            this.btnZ.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnZ.Location = new System.Drawing.Point(93, 365);
+            this.btnZ.Name = "btnZ";
+            this.btnZ.Size = new System.Drawing.Size(75, 23);
+            this.btnZ.TabIndex = 8;
+            this.btnZ.Text = "Z";
+            this.btnZ.UseVisualStyleBackColor = true;
+            this.btnZ.Click += new System.EventHandler(this.handleButton);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 641);
+            this.Controls.Add(this.btnZ);
             this.Controls.Add(this.btnSpace);
             this.Controls.Add(this.btnA);
             this.Controls.Add(this.lblPlayer3Name);
@@ -513,7 +515,6 @@ namespace WheelOfFortune
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pctWheel);
-            this.Controls.Add(this.btnZ);
             this.Controls.Add(this.btnY);
             this.Controls.Add(this.btnX);
             this.Controls.Add(this.btnW);
@@ -585,7 +586,6 @@ namespace WheelOfFortune
         private Button btnW;
         private Button btnX;
         private Button btnY;
-        private Button btnZ;
         private PictureBox pictureBox2;
         private Label lblState;
         private Label lblAngle;
@@ -599,6 +599,7 @@ namespace WheelOfFortune
         private Label lblPlayer2Name;
         private Label lblPlayer3Name;
         private Button btnSpace;
+        private Button btnZ;
     }
 }
 

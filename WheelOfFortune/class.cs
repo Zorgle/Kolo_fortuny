@@ -25,35 +25,6 @@ namespace WheelOfFortune
             this.ForeColor = Color.Black;
             this.Visible = true;
         }
-
-        public Word(string z)
-        {
-            this.Width = 40;
-            this.Height = 40;
-            this.BackColor = Color.White;
-            this.Font = new Font("Georgia", 16);
-            this.TextAlign = HorizontalAlignment.Center;
-            this.ReadOnly = true;
-            this.Enabled = false;
-            this.UseSystemPasswordChar = true;
-            this.ForeColor = Color.Black;
-            this.Visible = true;
-        }
-
-        public Word(Word p)
-        {
-            this.Width = p.Width;
-            this.Height = p.Height;
-            this.BackColor = p.BackColor;
-            this.Name = p.Name;
-            this.Font = p.Font;
-            this.TextAlign = HorizontalAlignment.Center;
-            this.ReadOnly = true;
-            this.Enabled = false;
-            this.UseSystemPasswordChar = true;
-            this.ForeColor = Color.Black;
-            this.Visible = true;
-        }
     }
 
     public class SecretWord
@@ -85,36 +56,7 @@ namespace WheelOfFortune
                 field[i].Text = Convert.ToString(password[i]);      
             }
         }
-    }
-
-    public class Letter
-    {
-        public int x;
-        public int y;
-        public char sign;
-        public int size;
-        public bool status;
-
-        public Letter()
-        {
-            this.x = 0;
-            this.y = 0;
-            this.sign = '0';
-            this.size = 40;
-            this.status = false;
-        }
-
-        public Letter(char z)
-        {
-            this.x = 0;
-            this.y = 0;
-            this.sign = z;
-            this.size = 40;
-            this.status = false;
-        }
-    }
-
-   
+    }   
     
     public class Wheel
     {

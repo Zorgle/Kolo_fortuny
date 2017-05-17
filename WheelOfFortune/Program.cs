@@ -10,24 +10,16 @@ namespace WheelOfFortune
 {
     static class Program
     {
-  
-       
-
-        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            //haselko.pole = pole;
-            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 okienko = new Form1();
-            Application.Run(okienko);
-
-           // new Literka();
+            Form1 window = new Form1();
+            Application.Run(window);
         }
     }
 }

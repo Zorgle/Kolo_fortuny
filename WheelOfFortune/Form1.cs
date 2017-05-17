@@ -51,7 +51,7 @@ namespace WheelOfFortune
             lblPlayer3Name.Text = player3.name;
 
 
-            button = new Button[26];
+            button = new Button[27];
             vowel = new Button[6];
             consonant = new Button[20];
 
@@ -81,6 +81,7 @@ namespace WheelOfFortune
             button[23] = btnX;
             button[24] = btnY;
             button[25] = btnZ;
+            button[26] = btnSpace;
 
             vowel[0] = btnA;
             vowel[1] = btnE;
@@ -112,7 +113,7 @@ namespace WheelOfFortune
             consonant[18] = btnX;
             consonant[19] = btnZ;
 
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 26; i++)
             {
                 button[i].IsAccessible = true;    //already chosen
                 button[i].Enabled = true;         //active flag
