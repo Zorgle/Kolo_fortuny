@@ -55,7 +55,7 @@ namespace WheelOfFortune
                 field[i] = new Letter();
                 if (Convert.ToString(password[i]) == " ")
                 {
-                    y = y + 120;
+                    y = y + 60;
                     x = 0;
                     field[i].Visible = false;
                 }

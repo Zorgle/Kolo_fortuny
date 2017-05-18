@@ -66,7 +66,6 @@ namespace WheelOfFortune
             this.lblAngle = new System.Windows.Forms.Label();
             this.lblWheelValue = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.lblPoints = new System.Windows.Forms.Label();
             this.lblScore1 = new System.Windows.Forms.Label();
             this.lblScore2 = new System.Windows.Forms.Label();
             this.lblScore3 = new System.Windows.Forms.Label();
@@ -92,7 +91,7 @@ namespace WheelOfFortune
             this.btnB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnB.BackColor = System.Drawing.SystemColors.Control;
             this.btnB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnB.Location = new System.Drawing.Point(93, 417);
+            this.btnB.Location = new System.Drawing.Point(99, 569);
             this.btnB.Name = "btnB";
             this.btnB.Size = new System.Drawing.Size(75, 23);
             this.btnB.TabIndex = 2;
@@ -105,7 +104,7 @@ namespace WheelOfFortune
             this.btnC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnC.BackColor = System.Drawing.SystemColors.Control;
             this.btnC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnC.Location = new System.Drawing.Point(174, 417);
+            this.btnC.Location = new System.Drawing.Point(180, 569);
             this.btnC.Name = "btnC";
             this.btnC.Size = new System.Drawing.Size(75, 23);
             this.btnC.TabIndex = 3;
@@ -118,7 +117,7 @@ namespace WheelOfFortune
             this.btnD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnD.BackColor = System.Drawing.SystemColors.Control;
             this.btnD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnD.Location = new System.Drawing.Point(255, 417);
+            this.btnD.Location = new System.Drawing.Point(261, 569);
             this.btnD.Name = "btnD";
             this.btnD.Size = new System.Drawing.Size(75, 23);
             this.btnD.TabIndex = 5;
@@ -132,7 +131,7 @@ namespace WheelOfFortune
             this.btnE.BackColor = System.Drawing.SystemColors.Control;
             this.btnE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnE.ForeColor = System.Drawing.Color.Red;
-            this.btnE.Location = new System.Drawing.Point(336, 417);
+            this.btnE.Location = new System.Drawing.Point(342, 569);
             this.btnE.Name = "btnE";
             this.btnE.Size = new System.Drawing.Size(75, 23);
             this.btnE.TabIndex = 6;
@@ -145,7 +144,7 @@ namespace WheelOfFortune
             this.btnF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnF.BackColor = System.Drawing.SystemColors.Control;
             this.btnF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnF.Location = new System.Drawing.Point(417, 417);
+            this.btnF.Location = new System.Drawing.Point(423, 569);
             this.btnF.Name = "btnF";
             this.btnF.Size = new System.Drawing.Size(75, 23);
             this.btnF.TabIndex = 8;
@@ -158,7 +157,7 @@ namespace WheelOfFortune
             this.btnG.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnG.BackColor = System.Drawing.SystemColors.Control;
             this.btnG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnG.Location = new System.Drawing.Point(12, 446);
+            this.btnG.Location = new System.Drawing.Point(18, 598);
             this.btnG.Name = "btnG";
             this.btnG.Size = new System.Drawing.Size(75, 23);
             this.btnG.TabIndex = 8;
@@ -171,7 +170,7 @@ namespace WheelOfFortune
             this.btnH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnH.BackColor = System.Drawing.SystemColors.Control;
             this.btnH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnH.Location = new System.Drawing.Point(93, 446);
+            this.btnH.Location = new System.Drawing.Point(99, 598);
             this.btnH.Name = "btnH";
             this.btnH.Size = new System.Drawing.Size(75, 23);
             this.btnH.TabIndex = 8;
@@ -185,7 +184,7 @@ namespace WheelOfFortune
             this.btnI.BackColor = System.Drawing.SystemColors.Control;
             this.btnI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnI.ForeColor = System.Drawing.Color.Red;
-            this.btnI.Location = new System.Drawing.Point(174, 446);
+            this.btnI.Location = new System.Drawing.Point(180, 598);
             this.btnI.Name = "btnI";
             this.btnI.Size = new System.Drawing.Size(75, 23);
             this.btnI.TabIndex = 8;
@@ -198,7 +197,7 @@ namespace WheelOfFortune
             this.btnJ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnJ.BackColor = System.Drawing.SystemColors.Control;
             this.btnJ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJ.Location = new System.Drawing.Point(255, 446);
+            this.btnJ.Location = new System.Drawing.Point(261, 598);
             this.btnJ.Name = "btnJ";
             this.btnJ.Size = new System.Drawing.Size(75, 23);
             this.btnJ.TabIndex = 8;
@@ -211,7 +210,7 @@ namespace WheelOfFortune
             this.btnK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnK.BackColor = System.Drawing.SystemColors.Control;
             this.btnK.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnK.Location = new System.Drawing.Point(336, 446);
+            this.btnK.Location = new System.Drawing.Point(342, 598);
             this.btnK.Name = "btnK";
             this.btnK.Size = new System.Drawing.Size(75, 23);
             this.btnK.TabIndex = 8;
@@ -224,7 +223,7 @@ namespace WheelOfFortune
             this.btnL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnL.BackColor = System.Drawing.SystemColors.Control;
             this.btnL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnL.Location = new System.Drawing.Point(417, 446);
+            this.btnL.Location = new System.Drawing.Point(423, 598);
             this.btnL.Name = "btnL";
             this.btnL.Size = new System.Drawing.Size(75, 23);
             this.btnL.TabIndex = 8;
@@ -237,7 +236,7 @@ namespace WheelOfFortune
             this.btnM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnM.BackColor = System.Drawing.SystemColors.Control;
             this.btnM.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnM.Location = new System.Drawing.Point(12, 475);
+            this.btnM.Location = new System.Drawing.Point(18, 627);
             this.btnM.Name = "btnM";
             this.btnM.Size = new System.Drawing.Size(75, 23);
             this.btnM.TabIndex = 8;
@@ -250,7 +249,7 @@ namespace WheelOfFortune
             this.btnN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnN.BackColor = System.Drawing.SystemColors.Control;
             this.btnN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnN.Location = new System.Drawing.Point(93, 475);
+            this.btnN.Location = new System.Drawing.Point(99, 627);
             this.btnN.Name = "btnN";
             this.btnN.Size = new System.Drawing.Size(75, 23);
             this.btnN.TabIndex = 8;
@@ -264,7 +263,7 @@ namespace WheelOfFortune
             this.btnO.BackColor = System.Drawing.SystemColors.Control;
             this.btnO.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnO.ForeColor = System.Drawing.Color.Red;
-            this.btnO.Location = new System.Drawing.Point(174, 475);
+            this.btnO.Location = new System.Drawing.Point(180, 627);
             this.btnO.Name = "btnO";
             this.btnO.Size = new System.Drawing.Size(75, 23);
             this.btnO.TabIndex = 8;
@@ -277,7 +276,7 @@ namespace WheelOfFortune
             this.btnP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnP.BackColor = System.Drawing.SystemColors.Control;
             this.btnP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnP.Location = new System.Drawing.Point(255, 475);
+            this.btnP.Location = new System.Drawing.Point(261, 627);
             this.btnP.Name = "btnP";
             this.btnP.Size = new System.Drawing.Size(75, 23);
             this.btnP.TabIndex = 8;
@@ -290,7 +289,7 @@ namespace WheelOfFortune
             this.btnQ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnQ.BackColor = System.Drawing.SystemColors.Control;
             this.btnQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQ.Location = new System.Drawing.Point(336, 475);
+            this.btnQ.Location = new System.Drawing.Point(342, 627);
             this.btnQ.Name = "btnQ";
             this.btnQ.Size = new System.Drawing.Size(75, 23);
             this.btnQ.TabIndex = 8;
@@ -303,7 +302,7 @@ namespace WheelOfFortune
             this.btnR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnR.BackColor = System.Drawing.SystemColors.Control;
             this.btnR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnR.Location = new System.Drawing.Point(417, 475);
+            this.btnR.Location = new System.Drawing.Point(423, 627);
             this.btnR.Name = "btnR";
             this.btnR.Size = new System.Drawing.Size(75, 23);
             this.btnR.TabIndex = 8;
@@ -316,7 +315,7 @@ namespace WheelOfFortune
             this.btnS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnS.BackColor = System.Drawing.SystemColors.Control;
             this.btnS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnS.Location = new System.Drawing.Point(12, 504);
+            this.btnS.Location = new System.Drawing.Point(18, 656);
             this.btnS.Name = "btnS";
             this.btnS.Size = new System.Drawing.Size(75, 23);
             this.btnS.TabIndex = 8;
@@ -329,7 +328,7 @@ namespace WheelOfFortune
             this.btnT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnT.BackColor = System.Drawing.SystemColors.Control;
             this.btnT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnT.Location = new System.Drawing.Point(93, 504);
+            this.btnT.Location = new System.Drawing.Point(99, 656);
             this.btnT.Name = "btnT";
             this.btnT.Size = new System.Drawing.Size(75, 23);
             this.btnT.TabIndex = 8;
@@ -343,7 +342,7 @@ namespace WheelOfFortune
             this.btnU.BackColor = System.Drawing.SystemColors.Control;
             this.btnU.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnU.ForeColor = System.Drawing.Color.Red;
-            this.btnU.Location = new System.Drawing.Point(174, 504);
+            this.btnU.Location = new System.Drawing.Point(180, 656);
             this.btnU.Name = "btnU";
             this.btnU.Size = new System.Drawing.Size(75, 23);
             this.btnU.TabIndex = 8;
@@ -356,7 +355,7 @@ namespace WheelOfFortune
             this.btnV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnV.BackColor = System.Drawing.SystemColors.Control;
             this.btnV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnV.Location = new System.Drawing.Point(255, 504);
+            this.btnV.Location = new System.Drawing.Point(261, 656);
             this.btnV.Name = "btnV";
             this.btnV.Size = new System.Drawing.Size(75, 23);
             this.btnV.TabIndex = 8;
@@ -369,7 +368,7 @@ namespace WheelOfFortune
             this.btnW.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnW.BackColor = System.Drawing.SystemColors.Control;
             this.btnW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnW.Location = new System.Drawing.Point(336, 504);
+            this.btnW.Location = new System.Drawing.Point(342, 656);
             this.btnW.Name = "btnW";
             this.btnW.Size = new System.Drawing.Size(75, 23);
             this.btnW.TabIndex = 8;
@@ -382,7 +381,7 @@ namespace WheelOfFortune
             this.btnX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnX.BackColor = System.Drawing.SystemColors.Control;
             this.btnX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnX.Location = new System.Drawing.Point(417, 504);
+            this.btnX.Location = new System.Drawing.Point(423, 656);
             this.btnX.Name = "btnX";
             this.btnX.Size = new System.Drawing.Size(75, 23);
             this.btnX.TabIndex = 8;
@@ -396,7 +395,7 @@ namespace WheelOfFortune
             this.btnY.BackColor = System.Drawing.SystemColors.Control;
             this.btnY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnY.ForeColor = System.Drawing.Color.Red;
-            this.btnY.Location = new System.Drawing.Point(12, 533);
+            this.btnY.Location = new System.Drawing.Point(18, 685);
             this.btnY.Name = "btnY";
             this.btnY.Size = new System.Drawing.Size(75, 23);
             this.btnY.TabIndex = 8;
@@ -443,22 +442,11 @@ namespace WheelOfFortune
             this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo.Location = new System.Drawing.Point(7, 666);
+            this.lblInfo.Location = new System.Drawing.Point(23, 760);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(115, 33);
             this.lblInfo.TabIndex = 12;
             this.lblInfo.Text = "hint area";
-            // 
-            // lblPoints
-            // 
-            this.lblPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPoints.AutoSize = true;
-            this.lblPoints.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPoints.Location = new System.Drawing.Point(794, 9);
-            this.lblPoints.Name = "lblPoints";
-            this.lblPoints.Size = new System.Drawing.Size(63, 23);
-            this.lblPoints.TabIndex = 12;
-            this.lblPoints.Text = "Points:";
             // 
             // lblScore1
             // 
@@ -498,7 +486,7 @@ namespace WheelOfFortune
             this.lblPlayer1Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPlayer1Name.AutoSize = true;
             this.lblPlayer1Name.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer1Name.Location = new System.Drawing.Point(883, 9);
+            this.lblPlayer1Name.Location = new System.Drawing.Point(528, 6);
             this.lblPlayer1Name.Name = "lblPlayer1Name";
             this.lblPlayer1Name.Size = new System.Drawing.Size(100, 33);
             this.lblPlayer1Name.TabIndex = 15;
@@ -509,7 +497,7 @@ namespace WheelOfFortune
             this.lblPlayer2Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPlayer2Name.AutoSize = true;
             this.lblPlayer2Name.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer2Name.Location = new System.Drawing.Point(883, 42);
+            this.lblPlayer2Name.Location = new System.Drawing.Point(528, 39);
             this.lblPlayer2Name.Name = "lblPlayer2Name";
             this.lblPlayer2Name.Size = new System.Drawing.Size(100, 33);
             this.lblPlayer2Name.TabIndex = 16;
@@ -520,7 +508,7 @@ namespace WheelOfFortune
             this.lblPlayer3Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPlayer3Name.AutoSize = true;
             this.lblPlayer3Name.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer3Name.Location = new System.Drawing.Point(883, 75);
+            this.lblPlayer3Name.Location = new System.Drawing.Point(528, 72);
             this.lblPlayer3Name.Name = "lblPlayer3Name";
             this.lblPlayer3Name.Size = new System.Drawing.Size(100, 33);
             this.lblPlayer3Name.TabIndex = 17;
@@ -532,7 +520,7 @@ namespace WheelOfFortune
             this.btnA.BackColor = System.Drawing.SystemColors.Control;
             this.btnA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnA.ForeColor = System.Drawing.Color.Red;
-            this.btnA.Location = new System.Drawing.Point(12, 417);
+            this.btnA.Location = new System.Drawing.Point(18, 569);
             this.btnA.Name = "btnA";
             this.btnA.Size = new System.Drawing.Size(75, 23);
             this.btnA.TabIndex = 18;
@@ -545,7 +533,7 @@ namespace WheelOfFortune
             this.btnSpace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSpace.BackColor = System.Drawing.SystemColors.Control;
             this.btnSpace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSpace.Location = new System.Drawing.Point(174, 533);
+            this.btnSpace.Location = new System.Drawing.Point(180, 685);
             this.btnSpace.Name = "btnSpace";
             this.btnSpace.Size = new System.Drawing.Size(75, 23);
             this.btnSpace.TabIndex = 19;
@@ -559,7 +547,7 @@ namespace WheelOfFortune
             this.btnZ.BackColor = System.Drawing.SystemColors.Control;
             this.btnZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnZ.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnZ.Location = new System.Drawing.Point(93, 533);
+            this.btnZ.Location = new System.Drawing.Point(99, 685);
             this.btnZ.Name = "btnZ";
             this.btnZ.Size = new System.Drawing.Size(75, 23);
             this.btnZ.TabIndex = 8;
@@ -593,7 +581,7 @@ namespace WheelOfFortune
             this.lblInfo2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblInfo2.AutoSize = true;
             this.lblInfo2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInfo2.Location = new System.Drawing.Point(7, 608);
+            this.lblInfo2.Location = new System.Drawing.Point(23, 727);
             this.lblInfo2.Name = "lblInfo2";
             this.lblInfo2.Size = new System.Drawing.Size(115, 33);
             this.lblInfo2.TabIndex = 22;
@@ -604,7 +592,7 @@ namespace WheelOfFortune
             this.btnApostrophe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnApostrophe.BackColor = System.Drawing.SystemColors.Control;
             this.btnApostrophe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApostrophe.Location = new System.Drawing.Point(255, 533);
+            this.btnApostrophe.Location = new System.Drawing.Point(261, 685);
             this.btnApostrophe.Name = "btnApostrophe";
             this.btnApostrophe.Size = new System.Drawing.Size(75, 23);
             this.btnApostrophe.TabIndex = 23;
@@ -645,7 +633,7 @@ namespace WheelOfFortune
             this.btnAmpersand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAmpersand.BackColor = System.Drawing.SystemColors.Control;
             this.btnAmpersand.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAmpersand.Location = new System.Drawing.Point(336, 533);
+            this.btnAmpersand.Location = new System.Drawing.Point(342, 685);
             this.btnAmpersand.Name = "btnAmpersand";
             this.btnAmpersand.Size = new System.Drawing.Size(75, 23);
             this.btnAmpersand.TabIndex = 24;
@@ -674,7 +662,6 @@ namespace WheelOfFortune
             this.Controls.Add(this.lblScore2);
             this.Controls.Add(this.lblWheelValue);
             this.Controls.Add(this.lblScore1);
-            this.Controls.Add(this.lblPoints);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.lblAngle);
             this.Controls.Add(this.lblState);
@@ -760,7 +747,6 @@ namespace WheelOfFortune
         private Label lblAngle;
         private Label lblWheelValue;
         private Label lblInfo;
-        private Label lblPoints;
         private Label lblScore1;
         private Label lblScore2;
         private Label lblScore3;

@@ -18,8 +18,8 @@ namespace WheelOfFortune
         Button[] button;
         Button[] vowel;
         Button[] consonant;
-        String[] words = { "Bonnie & Clyde" };// "ASHERON'S CALL", "LADY AERFALLE", "DARK SORCERER'S PHYLACTERY", "GLOBE OF AUBEREAN", "HELL'S WRATH" };
-        String[] category = {"Duos", "AC", "Bosses", "Items", "Items", "Players" };
+        String[] words = { "BONNIE & CLYDE", "WILLY WONKA'S CHOCOLATE FACTORY", "HODGE PODGE", "SEWING & SLOT MACHINE", "MICHAEL J FOX & MARTY MCFLY", "SUPER MARIO BROTHERS", "ELLEN DEGENERES & PORTIA DE ROSSI", "OPTIMUS PRIME RIB", "RAMEN NOODLES", "POTLUCK", "YOU WASH I'LL DRY", "REDWOOD TREE", "BIG MAC MEAL", "GOOD NIGHT'S SLEEP", "ANGORA SWEATER", "TALES OF A FOURTH GRADE NOTHING", "GUNSMOKE", "CRUISE SHIP ENTERTAINER", "JUSTIN BIEBER", "BICYCLE WITH TRAINING WHEELS", "MIDNIGHT TRAIN TO GEORGIA", "WATCHING HOCKEY", "PRIME TIME EMMY AWARDS", "SATISFIED CUSTOMERS"};
+        String[] category = {"DUOS", "PLACE", "RHYME TIME", "SAME NAME", "STAR AND ROLL", "FAMILY", "FAMOUS MARRIED COUPLES", "BEFORE AND AFTER", "COLLEGE LIFE", "EVENTS", "PHRASE", "LIVING THING", "FOOD", "PHRASE", "AROUND THE HOUSE", "BOOK TITLE", "CLASSIC T.V.", "OCCUPATION", "PROPER NAME", "THING", "SONG", "THINGS TO DO", "SHOW BIZ", "PEOPLE"};
         Random rand;
         int wordIndex;
 
@@ -600,6 +600,9 @@ namespace WheelOfFortune
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.Player1Name = player1.name;
+            Properties.Settings.Default.Player2Name = player2.name;
+            Properties.Settings.Default.Player3Name = player3.name;
             Properties.Settings.Default.Player1Points = player1.points;
             Properties.Settings.Default.Player2Points = player2.points;
             Properties.Settings.Default.Player3Points = player3.points;
