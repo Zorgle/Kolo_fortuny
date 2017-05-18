@@ -22,5 +22,89 @@ namespace WheelOfFortune.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Player1")]
+        public string Player1Name {
+            get {
+                return ((string)(this["Player1Name"]));
+            }
+            set {
+                this["Player1Name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Player2")]
+        public string Player2Name {
+            get {
+                return ((string)(this["Player2Name"]));
+            }
+            set {
+                this["Player2Name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Player3")]
+        public string Player3Name {
+            get {
+                return ((string)(this["Player3Name"]));
+            }
+            set {
+                this["Player3Name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Player1Points {
+            get {
+                return ((int)(this["Player1Points"]));
+            }
+            set {
+                this["Player1Points"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Player2Points {
+            get {
+                return ((int)(this["Player2Points"]));
+            }
+            set {
+                this["Player2Points"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Player3Points {
+            get {
+                return ((int)(this["Player3Points"]));
+            }
+            set {
+                this["Player3Points"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string StartingPlayerName {
+            get {
+                return ((string)(this["StartingPlayerName"]));
+            }
+            set {
+                this["StartingPlayerName"] = value;
+            }
+        }
     }
 }

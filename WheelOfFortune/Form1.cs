@@ -36,21 +36,32 @@ namespace WheelOfFortune
             wheelofFortune = new Wheel();
             secretWord = new SecretWord(words[wordIndex]);
             word = new Letter[secretWord.size];
-            player1 = new Player("Player1");
-            player2 = new Player("Player2");
-            player3 = new Player("Player3");
+            player1 = new Player(Properties.Settings.Default.Player1Name);
+            player1.points = Properties.Settings.Default.Player1Points;
+            player2 = new Player(Properties.Settings.Default.Player2Name);
+            player2.points = Properties.Settings.Default.Player2Points;
+            player3 = new Player(Properties.Settings.Default.Player3Name);
+            player3.points = Properties.Settings.Default.Player3Points;
             currentplayer = player1;
+            if (player2.name == Properties.Settings.Default.StartingPlayerName)
+            {
+                currentplayer = player2;
+            }
+            else if (player3.name == Properties.Settings.Default.StartingPlayerName)
+            {
+                currentplayer = player3;
+            }
             wheelIsMoved = false;
             wheelTimes = 100;
             InitializeComponent();
             drawSecretWord();
+            setPlayerColors();
             lblInfo2.Text = "";
             lblCategory.Text = "Category: " + category[wordIndex];
             wheelTimer = new Timer();
             wheelTimer.Interval = 10;
             wheelTimer.Tick += wheelTimer_Tick;
             lblPlayer1Name.Text = player1.name;
-            lblPlayer1Name.ForeColor = Color.Red;
             lblPlayer2Name.Text = player2.name;
             lblPlayer3Name.Text = player3.name;
 
@@ -181,23 +192,14 @@ namespace WheelOfFortune
                         if (currentplayer == player1)
                         {
                             lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
-                            lblPlayer1Name.ForeColor = Color.Red;
-                            lblPlayer2Name.ForeColor = Color.Black;
-                            lblPlayer3Name.ForeColor = Color.Black;
                         }
                         else if (currentplayer == player2)
                         {
                             lblScore2.Text = "$" + Convert.ToString(currentplayer.points);
-                            lblPlayer1Name.ForeColor = Color.Black;
-                            lblPlayer2Name.ForeColor = Color.Red;
-                            lblPlayer3Name.ForeColor = Color.Black;
                         }
                         else if (currentplayer == player3)
                         {
                             lblScore3.Text = "$" + Convert.ToString(currentplayer.points);
-                            lblPlayer1Name.ForeColor = Color.Black;
-                            lblPlayer2Name.ForeColor = Color.Black;
-                            lblPlayer3Name.ForeColor = Color.Red;
                         }
                     }
                     else
@@ -392,33 +394,41 @@ namespace WheelOfFortune
 
         private Player incrementPlayer(Player passedPlayer)
         {
-            if (passedPlayer == player1)
+            if (currentplayer == player1)
             {
-                lblPlayer1Name.ForeColor = Color.Black;
-                lblPlayer2Name.ForeColor = Color.Red;
-                lblPlayer3Name.ForeColor = Color.Black;
                 currentplayer = player2;
-                return player2;
             }
-            else if (passedPlayer == player2)
+            else if (currentplayer == player2)
             {
-                lblPlayer1Name.ForeColor = Color.Black;
-                lblPlayer2Name.ForeColor = Color.Black;
-                lblPlayer3Name.ForeColor = Color.Red;
                 currentplayer = player3;
-                return player3;
             }
-            else if (passedPlayer == player3)
+            else if (currentplayer == player3)
+            {
+                currentplayer = player1;
+            }
+            setPlayerColors();
+            return currentplayer;
+        }
+
+        private void setPlayerColors()
+        {
+            if (currentplayer == player1)
             {
                 lblPlayer1Name.ForeColor = Color.Red;
                 lblPlayer2Name.ForeColor = Color.Black;
                 lblPlayer3Name.ForeColor = Color.Black;
-                currentplayer = player1;
-                return player1;
             }
-            else
+            else if (currentplayer == player2)
             {
-                return player1;
+                lblPlayer1Name.ForeColor = Color.Black;
+                lblPlayer2Name.ForeColor = Color.Red;
+                lblPlayer3Name.ForeColor = Color.Black;
+            }
+            else if (currentplayer == player3)
+            {
+                lblPlayer1Name.ForeColor = Color.Black;
+                lblPlayer2Name.ForeColor = Color.Black;
+                lblPlayer3Name.ForeColor = Color.Red;
             }
         }
 
@@ -585,6 +595,15 @@ namespace WheelOfFortune
         private void btnSolve_Click(object sender, EventArgs e)
         {
             solvePuzzle();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Player1Points = player1.points;
+            Properties.Settings.Default.Player2Points = player2.points;
+            Properties.Settings.Default.Player3Points = player3.points;
+            Properties.Settings.Default.StartingPlayerName = currentplayer.name;
+            Properties.Settings.Default.Save();
         }
     }
 }
