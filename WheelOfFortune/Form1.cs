@@ -18,8 +18,8 @@ namespace WheelOfFortune
         Button[] button;
         Button[] vowel;
         Button[] consonant;
-        String[] words = { "ASHERON'S CALL", "LADY AERFALLE", "DARK SORCERER'S PHYLACTERY", "GLOBE OF AUBEREAN", "HELL'S WRATH" };
-        String[] category = { "AC", "Bosses", "Items", "Items", "Players" };
+        String[] words = { "Bonnie & Clyde" };// "ASHERON'S CALL", "LADY AERFALLE", "DARK SORCERER'S PHYLACTERY", "GLOBE OF AUBEREAN", "HELL'S WRATH" };
+        String[] category = {"Duos", "AC", "Bosses", "Items", "Items", "Players" };
         Random rand;
         int wordIndex;
 
@@ -151,6 +151,7 @@ namespace WheelOfFortune
         {
             handleButton(btnSpace, e);
             handleButton(btnApostrophe, e);
+            handleButton(btnAmpersand, e);
             lblInfo.Text = game.hint[1];
         }
 
