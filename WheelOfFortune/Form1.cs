@@ -145,10 +145,20 @@ namespace WheelOfFortune
 
         }
 
+        bool isVowel(string ch)
+        {
+            return ch == "A" || ch == "E" || ch == "I" || ch == "O" || ch == "U" || ch == "Y";
+        }
         private void handleButton(object sender, EventArgs e)
         {
             Boolean ifExist = false;
             Button chosenButton = (Button)sender;
+            bool buyingVowel = isVowel(chosenButton.Text);
+            if (buyingVowel)
+            {
+                currentplayer.points -= 125;
+            }
+
             for (int i = 0; i < secretWord.size; i++)
             {
                 if ((secretWord.field[i].Text.ToUpper()).Equals((chosenButton.Text.ToUpper())))
@@ -156,16 +166,10 @@ namespace WheelOfFortune
                     secretWord.field[i].UseSystemPasswordChar = false;
                     chosenButton.IsAccessible = false;
 
-                    if (chosenButton.Text.Equals("A")
-                        || chosenButton.Text.Equals("E")
-                        || chosenButton.Text.Equals("I")
-                        || chosenButton.Text.Equals("O")
-                        || chosenButton.Text.Equals("U")
-                        || chosenButton.Text.Equals("Y"))
+                    if (buyingVowel)
                     {
                         if (!ifExist)
                         {
-                            currentplayer.points -= 125;
                             hideLetterButtons();
                         }
                         if (currentplayer == player1)
@@ -194,19 +198,6 @@ namespace WheelOfFortune
                     {
                         game.guessedLetter += 1;
                         currentplayer.points += game.rate;
-                        if (currentplayer == player1)
-                        {
-                            lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
-                        }
-                        else if (currentplayer == player2)
-                        {
-                            lblScore2.Text = "$" + Convert.ToString(currentplayer.points);
-                        }
-                        else if (currentplayer == player3)
-                        {
-                            lblScore3.Text = "$" + Convert.ToString(currentplayer.points);
-                        }
-                        game.step = 3;
                     }
 
                     ifExist = true;
@@ -222,6 +213,14 @@ namespace WheelOfFortune
                 incrementPlayer(currentplayer);
             }
 
+            UpdateAllPlayerPoints();
+
+        }
+        void UpdateAllPlayerPoints()
+        {
+            lblScore1.Text = "$" + Convert.ToString(player1.points);
+            lblScore2.Text = "$" + Convert.ToString(player2.points);
+            lblScore3.Text = "$" + Convert.ToString(player3.points);
         }
 
         public Bitmap rotateImage()
@@ -492,7 +491,7 @@ namespace WheelOfFortune
         {
             for (int i = 0; i < vowel.Length; i++)
             {
-                if (vowel[i].IsAccessible)
+                if (vowel[i].IsAccessible && currentplayer.points > 125)
                 {
                     vowel[i].Enabled = true;
                     vowel[i].Visible = true;
