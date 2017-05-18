@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WheelOfFortune
 {
-    public class Word : System.Windows.Forms.TextBox
+    public class Letter : System.Windows.Forms.TextBox
     {
-        public Word()
+        public Letter()
         {
             this.Width = 40;
             this.Height = 40;
@@ -31,33 +31,34 @@ namespace WheelOfFortune
     {
         public int size;
         public string password;
-        public Word[] field;
+        public Letter[] field;
         public int value;
 
         public SecretWord()
         {
             size = 0;
-            field = new Word[password.Length];
+            field = new Letter[password.Length];
             password = "0";
             value = 0;
         }
 
         public SecretWord(string s)
         {
-            field = new Word[s.Length];
+            field = new Letter[s.Length];
             size = s.Length;
             password = s;
             int y = 120;
             int x = 0;
             for (int i = 0; i < field.Length; i++)
             {
+                x++;
+                field[i] = new Letter();
                 if (Convert.ToString(password[i]) == " ")
                 {
                     y = y + 120;
                     x = 0;
+                    field[i].Visible = false;
                 }
-                x++;
-                field[i] = new Word();
                 field[i].Name = "Letter " + i;
                 field[i].Location = new Point(60 * x + 80, y);
                 field[i].Text = Convert.ToString(password[i]);

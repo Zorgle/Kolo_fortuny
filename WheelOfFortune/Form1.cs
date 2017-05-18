@@ -8,7 +8,7 @@ namespace WheelOfFortune
     public partial class Form1 : Form
     {
         SecretWord secretWord;
-        Word[] word;
+        Letter[] word;
         Wheel wheelofFortune;
         bool wheelIsMoved;
         float startWheelTimes;
@@ -35,7 +35,7 @@ namespace WheelOfFortune
             wordIndex = rand.Next(0, words.Length);
             wheelofFortune = new Wheel();
             secretWord = new SecretWord(words[wordIndex]);
-            word = new Word[secretWord.size];
+            word = new Letter[secretWord.size];
             player1 = new Player("Player1");
             player2 = new Player("Player2");
             player3 = new Player("Player3");
@@ -163,7 +163,11 @@ namespace WheelOfFortune
                         || chosenButton.Text.Equals("U")
                         || chosenButton.Text.Equals("Y"))
                     {
-                        currentplayer.points -= 125;
+                        if (!ifExist)
+                        {
+                            currentplayer.points -= 125;
+                            hideLetterButtons();
+                        }
                         if (currentplayer == player1)
                         {
                             lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
@@ -479,13 +483,24 @@ namespace WheelOfFortune
         {
             lblInfo.Visible = true;
             lblInfo.Text = game.hint[2];
+            hideLetterButtons();
             pctWheel.Click -= new System.EventHandler(this.pictureBox1_Click);
 
+            
+        }
+        public void hideLetterButtons()
+        {
             for (int i = 0; i < vowel.Length; i++)
             {
                 if (vowel[i].IsAccessible)
                 {
+                    vowel[i].Enabled = true;
+                    vowel[i].Visible = true;
+                }
+                else
+                {
                     vowel[i].Enabled = false;
+                    vowel[i].Visible = false;
                 }
             }
 
