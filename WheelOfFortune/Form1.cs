@@ -18,7 +18,7 @@ namespace WheelOfFortune
         Button[] button;
         Button[] vowel;
         Button[] consonant;
-        String[] words = { "ASHERONS CALL", "LADY AERFALLE", "DARK SORCERERS PHYLACTERY",  "GLOBE OF AUBEREAN", "HELLS WRATH"};
+        String[] words = { "ASHERON'S CALL", "LADY AERFALLE", "DARK SORCERER'S PHYLACTERY", "GLOBE OF AUBEREAN", "HELL'S WRATH" };
         String[] category = { "AC", "Bosses", "Items", "Items", "Players" };
         Random rand;
         int wordIndex;
@@ -44,6 +44,7 @@ namespace WheelOfFortune
             wheelTimes = 100;
             InitializeComponent();
             drawSecretWord();
+            lblInfo2.Text = "";
             lblCategory.Text = "Category: " + category[wordIndex];
             wheelTimer = new Timer();
             wheelTimer.Interval = 10;
@@ -54,7 +55,7 @@ namespace WheelOfFortune
             lblPlayer3Name.Text = player3.name;
 
 
-            button = new Button[27];
+            button = new Button[28];
             vowel = new Button[6];
             consonant = new Button[20];
 
@@ -85,6 +86,7 @@ namespace WheelOfFortune
             button[24] = btnY;
             button[25] = btnZ;
             button[26] = btnSpace;
+            button[27] = btnApostrophe;
 
             vowel[0] = btnA;
             vowel[1] = btnE;
@@ -137,6 +139,7 @@ namespace WheelOfFortune
         private void Form1_Load(object sender, EventArgs e)
         {
             handleButton(btnSpace, e);
+            handleButton(btnApostrophe, e);
             lblInfo.Text = game.hint[1];
         }
 
@@ -159,6 +162,8 @@ namespace WheelOfFortune
             {
                 currentplayer.points -= 125;
             }
+
+            bool wasAccessible = chosenButton.IsAccessible;
 
             for (int i = 0; i < secretWord.size; i++)
             {
@@ -207,18 +212,23 @@ namespace WheelOfFortune
                 }
             }
 
-            if (!ifExist)
+            if (wasAccessible)
             {
-                lblInfo.Text = game.hint[4];
-                game.guessedLetter = 0;
-                game.step = 1;
-                incrementPlayer(currentplayer);
-            }
-            else
-            {
-                if (!buyingVowel)
+                if (!ifExist)
                 {
-                    game.step = 3;
+                    game.guessedLetter = 0;
+                    game.step = 1;
+                    lblInfo2.Text = currentplayer.name + ": " + game.hint[4];
+                    incrementPlayer(currentplayer);
+                }
+                else
+                {
+                    lblInfo2.Text = currentplayer.name + ": bought the vowel " + chosenButton.Text;
+                    if (!buyingVowel)
+                    {
+                        lblInfo2.Text = currentplayer.name + ": guessed the consonant " + chosenButton.Text;
+                        game.step = 3;
+                    }
                 }
             }
 
@@ -338,7 +348,7 @@ namespace WheelOfFortune
 
                 if (wheelofFortune.wheelState[wheelofFortune.state] == 0)
                 {
-                    lblInfo.Text = game.hint[3];
+                    lblInfo2.Text = currentplayer.name + ": " + game.hint[3];
                     currentplayer.points = 0;
                     incrementPlayer(currentplayer);
                     game.step = 1;
@@ -346,7 +356,7 @@ namespace WheelOfFortune
                 }
                 else if (wheelofFortune.wheelState[wheelofFortune.state] == -1)
                 {
-                    lblInfo.Text = game.hint[5];
+                    lblInfo2.Text = currentplayer.name + ": " + game.hint[5];
                     incrementPlayer(currentplayer);
                     game.step = 1;
                     pctWheel.Enabled = true;
@@ -364,15 +374,19 @@ namespace WheelOfFortune
         private void solvePuzzle()
         {
             string guess = Interaction.InputBox(currentplayer.name + " would like to solve the Puzzle. Enter your guess.", "Solve the Puzzle", "(guess)");
-            if (guess.ToUpper() == secretWord.password.ToUpper())
+            if (guess != "")
             {
-                currentplayer.guessedWord = true;
-            }
-            else
-            {
-                incrementPlayer(currentplayer);
-                pctWheel.Enabled = true;
-                game.step = 1;
+                if (guess.ToUpper() == secretWord.password.ToUpper())
+                {
+                    currentplayer.guessedWord = true;
+                }
+                else
+                {
+                    lblInfo2.Text = currentplayer.name + ": failed to solve the puzzle.";
+                    incrementPlayer(currentplayer);
+                    pctWheel.Enabled = true;
+                    game.step = 1;
+                }
             }
         }
 
@@ -498,13 +512,13 @@ namespace WheelOfFortune
             updateLetterButtons();
             pctWheel.Enabled = false;
 
-            
+
         }
         public void updateLetterButtons()
         {
             if (game.step != 2)
             {
-                if (currentplayer.points <= 125)
+                if (currentplayer.points < 125)
                 {
                     game.step = 1;
                 }
@@ -550,6 +564,7 @@ namespace WheelOfFortune
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            lblInfo2.Text = "";
             pctWheel.Enabled = false;
             wheelIsMoved = true;
             Random rand = new Random();
