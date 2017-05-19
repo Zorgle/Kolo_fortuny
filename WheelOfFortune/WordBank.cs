@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using PuzzleList = System.Collections.Generic.List<WheelOfFortune.WordBank.Puzzle>;
 
 namespace WheelOfFortune
 {
@@ -9,25 +10,51 @@ namespace WheelOfFortune
     {
         public class Puzzle
         {
-            public readonly string Category; public readonly string Answer;
-            public Puzzle(string category, string answer) { Category = category; Answer = answer; }
+            public readonly string Filename;
+            public readonly string Category;
+            public readonly string Answer;
+            public Puzzle(string filename, string category, string answer) { Filename = filename; Category = category; Answer = answer; }
         }
-        private List<Puzzle> _puzzles = new List<Puzzle>();
-        private List<Puzzle> _playedPuzzles = new List<Puzzle>();
+        private Dictionary<string, PuzzleList> _puzzleSets = new Dictionary<string, PuzzleList>();
+        private PuzzleList _playedPuzzles = new PuzzleList();
         private Random _rand = new Random();
-        public void AddPuzzle(string category, string answer)
+        public void AddPuzzle(string filename, string category, string answer)
         {
-            _puzzles.Add(new Puzzle(category: category, answer: answer));
+            if (!_puzzleSets.ContainsKey(filename))
+            {
+                _puzzleSets.Add(filename, new PuzzleList());
+            }
+            PuzzleList puzzles = _puzzleSets[filename];
+            answer = answer.Replace(".", "");
+            puzzles.Add(new Puzzle(filename: filename, category: category, answer: answer));
         }
-        public int PuzzlesRemaining { get { return _puzzles.Count; } }
+        public int PuzzlesRemaining { get { return _puzzleSets.Sum(x => x.Value.Count); } }
         public Puzzle GetPuzzle()
         {
-            if (_puzzles.Count == 0) { throw new Exception("Out of puzzles"); }
-            int wordIndex = _rand.Next(0, _puzzles.Count);
-            var puzzle = _puzzles[wordIndex];
+            // Choose a random set
+            int set = _rand.Next(0, _puzzleSets.Count);
+            var puzzles = RandomValues(_puzzleSets).Take(1).First();
+            if (puzzles.Count == 0) { throw new Exception("Error: got empty puzzle list"); }
+            // Choose a random word from set
+            int wordIndex = _rand.Next(0, puzzles.Count);
+            var puzzle = puzzles[wordIndex];
             _playedPuzzles.Add(puzzle);
-            _puzzles.RemoveAt(wordIndex);
+            puzzles.RemoveAt(wordIndex);
+            if (puzzles.Count == 0)
+            {
+                _puzzleSets.Remove(puzzle.Filename);
+            }
             return puzzle;
+        }
+        public static IEnumerable<TValue> RandomValues<TKey, TValue>(IDictionary<TKey, TValue> dict)
+        {
+            Random rand = new Random();
+            List<TValue> values = Enumerable.ToList(dict.Values);
+            int size = dict.Count;
+            while (true)
+            {
+                yield return values[rand.Next(size)];
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ namespace WheelOfFortune
     {
         public void Load(WordBank bank, string filepath, string category)
         {
+            string basename = Path.GetFileNameWithoutExtension(filepath);
             if (!File.Exists(filepath)) { throw new Exception("File does not exist: " + filepath); }
             var lines = File.ReadAllLines(filepath);
             int lineno = 0;
@@ -34,7 +35,7 @@ namespace WheelOfFortune
                 if (data.Item1.Length > 0)
                 {
                     string answer = data.Item1;
-                    bank.AddPuzzle(linecat, answer);
+                    bank.AddPuzzle(basename, linecat, answer);
                 }
             }
         }
@@ -42,13 +43,20 @@ namespace WheelOfFortune
         {
             string word = "", category = "";
             int ix = line.IndexOf(":");
-            if (ix > 0)
+            if (ix == -1)
             {
-                word = line.Substring(0, ix).Trim();
+                word = line.Trim();
             }
-            if (ix < line.Length)
+            else
             {
-                category = line.Substring(ix + 1).Trim();
+                if (ix > 0)
+                {
+                    word = line.Substring(0, ix).Trim();
+                }
+                if (ix < line.Length)
+                {
+                    category = line.Substring(ix + 1).Trim();
+                }
             }
             return new Tuple<string, string>(word, category);
         }

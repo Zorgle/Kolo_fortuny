@@ -28,8 +28,7 @@ namespace WheelOfFortune
         public MainForm()
         {
             var wordBank = new WordBank();
-            var bankLoader = new BankLoader();
-            bankLoader.Load(wordBank, "words.txt", "Puzzle");
+            LoadWords(wordBank);
             var puzzle = wordBank.GetPuzzle();
 
             wheelofFortune = new Wheel();
@@ -146,7 +145,17 @@ namespace WheelOfFortune
             updateLetterButtons();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void LoadWords(WordBank wordBank)
+        {
+            var bankLoader = new BankLoader();
+            string curpath = System.IO.Directory.GetCurrentDirectory();
+            foreach (var filepath in System.IO.Directory.GetFiles(curpath, "*.txt"))
+            {
+                bankLoader.Load(wordBank, filepath, "Puzzle");
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
             handleButton(btnSpace, e);
             handleButton(btnApostrophe, e);
