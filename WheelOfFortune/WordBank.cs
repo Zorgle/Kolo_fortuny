@@ -25,8 +25,14 @@ namespace WheelOfFortune
                 _puzzleSets.Add(filename, new PuzzleList());
             }
             PuzzleList puzzles = _puzzleSets[filename];
-            answer = answer.Replace(".", "");
+            answer = RemoveUnhandledPunctuation(answer);
             puzzles.Add(new Puzzle(filename: filename, category: category, answer: answer));
+        }
+        private string RemoveUnhandledPunctuation(string phrase)
+        {
+            phrase = phrase.Replace(".", "");
+            phrase = phrase.Replace("!", "");
+            return phrase;
         }
         public int PuzzlesRemaining { get { return _puzzleSets.Sum(x => x.Value.Count); } }
         public Puzzle GetPuzzle()

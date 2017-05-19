@@ -160,13 +160,8 @@ namespace WheelOfFortune
             handleButton(btnSpace, e);
             handleButton(btnApostrophe, e);
             handleButton(btnAmpersand, e);
+            handleButton(btnHyphen, e);
             lblInfo.Text = game.hint[1];
-        }
-
-
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         bool isVowel(string ch)
