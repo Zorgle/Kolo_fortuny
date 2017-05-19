@@ -18,10 +18,6 @@ namespace WheelOfFortune
         Button[] button;
         Button[] vowel;
         Button[] consonant;
-        String[] words = { "BONNIE & CLYDE", "WILLY WONKA'S CHOCOLATE FACTORY", "HODGE PODGE", "SEWING & SLOT MACHINE", "MICHAEL J FOX & MARTY MCFLY", "SUPER MARIO BROTHERS", "ELLEN DEGENERES & PORTIA DE ROSSI", "OPTIMUS PRIME RIB", "RAMEN NOODLES", "POTLUCK", "YOU WASH I'LL DRY", "REDWOOD TREE", "BIG MAC MEAL", "GOOD NIGHT'S SLEEP", "ANGORA SWEATER", "TALES OF A FOURTH GRADE NOTHING", "GUNSMOKE", "CRUISE SHIP ENTERTAINER", "JUSTIN BIEBER", "BICYCLE WITH TRAINING WHEELS", "MIDNIGHT TRAIN TO GEORGIA", "WATCHING HOCKEY", "PRIME TIME EMMY AWARDS", "SATISFIED CUSTOMERS"};
-        String[] category = {"DUOS", "PLACE", "RHYME TIME", "SAME NAME", "STAR AND ROLL", "FAMILY", "FAMOUS MARRIED COUPLES", "BEFORE AND AFTER", "COLLEGE LIFE", "EVENTS", "PHRASE", "LIVING THING", "FOOD", "PHRASE", "AROUND THE HOUSE", "BOOK TITLE", "CLASSIC T.V.", "OCCUPATION", "PROPER NAME", "THING", "SONG", "THINGS TO DO", "SHOW BIZ", "PEOPLE"};
-        Random rand;
-        int wordIndex;
 
         Game game;
         Player player1;
@@ -31,10 +27,13 @@ namespace WheelOfFortune
 
         public MainForm()
         {
-            rand = new Random();
-            wordIndex = rand.Next(0, words.Length);
+            var wordBank = new WordBank();
+            var bankLoader = new BankLoader();
+            bankLoader.Load(wordBank, "words.txt", "Puzzle");
+            var puzzle = wordBank.GetPuzzle();
+
             wheelofFortune = new Wheel();
-            secretWord = new SecretWord(words[wordIndex]);
+            secretWord = new SecretWord(puzzle.Answer);
             word = new Letter[secretWord.size];
             player1 = new Player(Properties.Settings.Default.Player1Name);
             player1.points = Properties.Settings.Default.Player1Points;
@@ -57,7 +56,7 @@ namespace WheelOfFortune
             drawSecretWord();
             setPlayerColors();
             lblInfo2.Text = "";
-            lblCategory.Text = "Category: " + category[wordIndex];
+            lblCategory.Text = "Category: " + puzzle.Category;
             wheelTimer = new Timer();
             wheelTimer.Interval = 10;
             wheelTimer.Tick += wheelTimer_Tick;
@@ -351,6 +350,7 @@ namespace WheelOfFortune
 
                 if (wheelofFortune.wheelState[wheelofFortune.state] == 0)
                 {
+                    // Bankrupt
                     lblInfo2.Text = currentplayer.name + ": " + game.hint[3];
                     currentplayer.points = 0;
                     incrementPlayer(currentplayer);
@@ -359,6 +359,7 @@ namespace WheelOfFortune
                 }
                 else if (wheelofFortune.wheelState[wheelofFortune.state] == -1)
                 {
+                    // Lose turn
                     lblInfo2.Text = currentplayer.name + ": " + game.hint[5];
                     incrementPlayer(currentplayer);
                     game.step = 1;
