@@ -5,7 +5,7 @@ using Microsoft.VisualBasic;
 
 namespace WheelOfFortune
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         SecretWord secretWord;
         Letter[] word;
@@ -29,7 +29,7 @@ namespace WheelOfFortune
         Player player3;
         Player currentplayer;
 
-        public Form1()
+        public MainForm()
         {
             rand = new Random();
             wordIndex = rand.Next(0, words.Length);

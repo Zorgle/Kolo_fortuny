@@ -18,7 +18,7 @@ namespace WheelOfFortune
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 window = new Form1();
+            MainForm window = new MainForm();
             Application.Run(window);
         }
     }

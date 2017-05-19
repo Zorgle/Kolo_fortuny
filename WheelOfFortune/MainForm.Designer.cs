@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WheelOfFortune
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
