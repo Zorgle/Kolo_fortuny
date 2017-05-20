@@ -83,6 +83,12 @@ namespace WheelOfFortune
             this.pctWheel = new System.Windows.Forms.PictureBox();
             this.btnAmpersand = new System.Windows.Forms.Button();
             this.btnHyphen = new System.Windows.Forms.Button();
+            this.lblPlayer4Name = new System.Windows.Forms.Label();
+            this.lblPlayer5Name = new System.Windows.Forms.Label();
+            this.lblPlayer6Name = new System.Windows.Forms.Label();
+            this.lblScore4 = new System.Windows.Forms.Label();
+            this.lblScore5 = new System.Windows.Forms.Label();
+            this.lblScore6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctWheel)).BeginInit();
             this.SuspendLayout();
@@ -454,7 +460,7 @@ namespace WheelOfFortune
             this.lblScore1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblScore1.AutoSize = true;
             this.lblScore1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore1.Location = new System.Drawing.Point(1088, 6);
+            this.lblScore1.Location = new System.Drawing.Point(1012, 9);
             this.lblScore1.Name = "lblScore1";
             this.lblScore1.Size = new System.Drawing.Size(43, 33);
             this.lblScore1.TabIndex = 12;
@@ -465,7 +471,7 @@ namespace WheelOfFortune
             this.lblScore2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblScore2.AutoSize = true;
             this.lblScore2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore2.Location = new System.Drawing.Point(1088, 42);
+            this.lblScore2.Location = new System.Drawing.Point(1012, 45);
             this.lblScore2.Name = "lblScore2";
             this.lblScore2.Size = new System.Drawing.Size(43, 33);
             this.lblScore2.TabIndex = 13;
@@ -476,7 +482,7 @@ namespace WheelOfFortune
             this.lblScore3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblScore3.AutoSize = true;
             this.lblScore3.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore3.Location = new System.Drawing.Point(1088, 75);
+            this.lblScore3.Location = new System.Drawing.Point(1012, 78);
             this.lblScore3.Name = "lblScore3";
             this.lblScore3.Size = new System.Drawing.Size(43, 33);
             this.lblScore3.TabIndex = 14;
@@ -655,12 +661,84 @@ namespace WheelOfFortune
             this.btnHyphen.UseVisualStyleBackColor = false;
             this.btnHyphen.Visible = false;
             // 
+            // lblPlayer4Name
+            // 
+            this.lblPlayer4Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPlayer4Name.AutoSize = true;
+            this.lblPlayer4Name.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayer4Name.Location = new System.Drawing.Point(528, 105);
+            this.lblPlayer4Name.Name = "lblPlayer4Name";
+            this.lblPlayer4Name.Size = new System.Drawing.Size(100, 33);
+            this.lblPlayer4Name.TabIndex = 26;
+            this.lblPlayer4Name.Text = "Player4";
+            // 
+            // lblPlayer5Name
+            // 
+            this.lblPlayer5Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPlayer5Name.AutoSize = true;
+            this.lblPlayer5Name.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayer5Name.Location = new System.Drawing.Point(528, 138);
+            this.lblPlayer5Name.Name = "lblPlayer5Name";
+            this.lblPlayer5Name.Size = new System.Drawing.Size(100, 33);
+            this.lblPlayer5Name.TabIndex = 27;
+            this.lblPlayer5Name.Text = "Player5";
+            // 
+            // lblPlayer6Name
+            // 
+            this.lblPlayer6Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPlayer6Name.AutoSize = true;
+            this.lblPlayer6Name.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayer6Name.Location = new System.Drawing.Point(528, 171);
+            this.lblPlayer6Name.Name = "lblPlayer6Name";
+            this.lblPlayer6Name.Size = new System.Drawing.Size(100, 33);
+            this.lblPlayer6Name.TabIndex = 28;
+            this.lblPlayer6Name.Text = "Player6";
+            // 
+            // lblScore4
+            // 
+            this.lblScore4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblScore4.AutoSize = true;
+            this.lblScore4.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore4.Location = new System.Drawing.Point(1012, 108);
+            this.lblScore4.Name = "lblScore4";
+            this.lblScore4.Size = new System.Drawing.Size(43, 33);
+            this.lblScore4.TabIndex = 29;
+            this.lblScore4.Text = "$0";
+            // 
+            // lblScore5
+            // 
+            this.lblScore5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblScore5.AutoSize = true;
+            this.lblScore5.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore5.Location = new System.Drawing.Point(1012, 141);
+            this.lblScore5.Name = "lblScore5";
+            this.lblScore5.Size = new System.Drawing.Size(43, 33);
+            this.lblScore5.TabIndex = 30;
+            this.lblScore5.Text = "$0";
+            // 
+            // lblScore6
+            // 
+            this.lblScore6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblScore6.AutoSize = true;
+            this.lblScore6.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore6.Location = new System.Drawing.Point(1012, 171);
+            this.lblScore6.Name = "lblScore6";
+            this.lblScore6.Size = new System.Drawing.Size(43, 33);
+            this.lblScore6.TabIndex = 31;
+            this.lblScore6.Text = "$0";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1203, 733);
+            this.Controls.Add(this.lblScore6);
+            this.Controls.Add(this.lblScore5);
+            this.Controls.Add(this.lblScore4);
+            this.Controls.Add(this.lblPlayer6Name);
+            this.Controls.Add(this.lblPlayer5Name);
+            this.Controls.Add(this.lblPlayer4Name);
             this.Controls.Add(this.btnHyphen);
             this.Controls.Add(this.btnAmpersand);
             this.Controls.Add(this.btnApostrophe);
@@ -772,7 +850,13 @@ namespace WheelOfFortune
         private Button btnZ;
         private Button btnSolve;
         private Label lblCategory;
-        private Label lblInfo2;        
+        private Label lblInfo2;
+        private Label lblPlayer4Name;
+        private Label lblPlayer5Name;
+        private Label lblPlayer6Name;
+        private Label lblScore4;
+        private Label lblScore5;
+        private Label lblScore6;        
     }
 }
 

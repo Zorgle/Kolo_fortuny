@@ -2,6 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using PlayerList = System.Collections.Generic.List<WheelOfFortune.Player>;
+using PlayerNameLabelList = System.Collections.Generic.List<System.Windows.Forms.Label>;
+using PlayerPointsLabelList = System.Collections.Generic.List<System.Windows.Forms.Label>;
 
 namespace WheelOfFortune
 {
@@ -20,10 +23,10 @@ namespace WheelOfFortune
         Button[] consonant;
 
         Game game;
-        Player player1;
-        Player player2;
-        Player player3;
-        Player currentplayer;
+        PlayerList players = new PlayerList();
+        PlayerNameLabelList playerNameLabels = new PlayerNameLabelList();
+        PlayerPointsLabelList playerPointLabels = new PlayerPointsLabelList();
+        int currentPlayerIx = 0;
 
         public MainForm()
         {
@@ -31,27 +34,15 @@ namespace WheelOfFortune
             LoadWords(wordBank);
             var puzzle = wordBank.GetPuzzle();
 
+            LoadPlayers();
+            FigureOutWhoseTurn();
             wheelofFortune = new Wheel();
             secretWord = new SecretWord(puzzle.Answer);
             word = new Letter[secretWord.size];
-            player1 = new Player(Properties.Settings.Default.Player1Name);
-            player1.points = Properties.Settings.Default.Player1Points;
-            player2 = new Player(Properties.Settings.Default.Player2Name);
-            player2.points = Properties.Settings.Default.Player2Points;
-            player3 = new Player(Properties.Settings.Default.Player3Name);
-            player3.points = Properties.Settings.Default.Player3Points;
-            currentplayer = player1;
-            if (player2.name == Properties.Settings.Default.StartingPlayerName)
-            {
-                currentplayer = player2;
-            }
-            else if (player3.name == Properties.Settings.Default.StartingPlayerName)
-            {
-                currentplayer = player3;
-            }
             wheelIsMoved = false;
             wheelTimes = 100;
             InitializeComponent();
+            InitializeLabelArrays();
             drawSecretWord();
             setPlayerColors();
             lblInfo2.Text = "";
@@ -59,9 +50,6 @@ namespace WheelOfFortune
             wheelTimer = new Timer();
             wheelTimer.Interval = 10;
             wheelTimer.Tick += wheelTimer_Tick;
-            lblPlayer1Name.Text = player1.name;
-            lblPlayer2Name.Text = player2.name;
-            lblPlayer3Name.Text = player3.name;
 
 
             button = new Button[28];
@@ -154,6 +142,63 @@ namespace WheelOfFortune
                 bankLoader.Load(wordBank, filepath, "Puzzle");
             }
         }
+        private void AddPlayer(string name, int points)
+        {
+            var player = new Player(name) { points = points };
+            players.Add(player);
+        }
+        private void LoadPlayers()
+        {
+            int numPlayers = Properties.Settings.Default.NumberOfPlayers;
+            if (numPlayers < 1) { numPlayers = 1; }
+            if (numPlayers > 6) { numPlayers = 6; }
+
+            AddPlayer(Properties.Settings.Default.Player1Name, Properties.Settings.Default.Player1Points);
+            if (numPlayers < 2) { return; }
+            AddPlayer(Properties.Settings.Default.Player2Name, Properties.Settings.Default.Player2Points);
+            if (numPlayers < 3) { return; }
+            AddPlayer(Properties.Settings.Default.Player3Name, Properties.Settings.Default.Player3Points);
+            if (numPlayers < 4) { return; }
+            AddPlayer(Properties.Settings.Default.Player4Name, Properties.Settings.Default.Player4Points);
+            if (numPlayers < 5) { return; }
+            AddPlayer(Properties.Settings.Default.Player5Name, Properties.Settings.Default.Player5Points);
+            if (numPlayers < 6) { return; }
+            AddPlayer(Properties.Settings.Default.Player6Name, Properties.Settings.Default.Player6Points);
+        }
+        private void FigureOutWhoseTurn()
+        {
+            // Figure out starting player turn
+            currentPlayerIx = 0;
+            for (int ix = 1; ix < players.Count; ++ix)
+            {
+                if (players[ix].name == Properties.Settings.Default.StartingPlayerName)
+                {
+                    currentPlayerIx = ix;
+                    break;
+                }
+            }
+        }
+        private void InitializeLabelArrays()
+        {
+            playerNameLabels.Add(lblPlayer1Name);
+            playerNameLabels.Add(lblPlayer2Name);
+            playerNameLabels.Add(lblPlayer3Name);
+            playerNameLabels.Add(lblPlayer4Name);
+            playerNameLabels.Add(lblPlayer5Name);
+            playerNameLabels.Add(lblPlayer6Name);
+            playerPointLabels.Add(lblScore1);
+            playerPointLabels.Add(lblScore2);
+            playerPointLabels.Add(lblScore3);
+            playerPointLabels.Add(lblScore4);
+            playerPointLabels.Add(lblScore5);
+            playerPointLabels.Add(lblScore6);
+            for (int ix = 0; ix < 6; ++ix)
+            {
+                bool ingame = (ix < players.Count);
+                playerNameLabels[ix].Visible = ingame;
+                playerPointLabels[ix].Visible = ingame;
+            }
+        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -168,6 +213,7 @@ namespace WheelOfFortune
         {
             return ch == "A" || ch == "E" || ch == "I" || ch == "O" || ch == "U" || ch == "Y";
         }
+        private Player CurrentPlayer { get { return players[currentPlayerIx]; } }
         private void handleButton(object sender, EventArgs e)
         {
             Boolean ifExist = false;
@@ -175,7 +221,7 @@ namespace WheelOfFortune
             bool buyingVowel = isVowel(chosenButton.Text);
             if (buyingVowel)
             {
-                currentplayer.points -= 125;
+                CurrentPlayer.points -= 125;
             }
 
             bool wasAccessible = chosenButton.IsAccessible;
@@ -193,23 +239,11 @@ namespace WheelOfFortune
                         {
                             updateLetterButtons();
                         }
-                        if (currentplayer == player1)
-                        {
-                            lblScore1.Text = "$" + Convert.ToString(currentplayer.points);
-                        }
-                        else if (currentplayer == player2)
-                        {
-                            lblScore2.Text = "$" + Convert.ToString(currentplayer.points);
-                        }
-                        else if (currentplayer == player3)
-                        {
-                            lblScore3.Text = "$" + Convert.ToString(currentplayer.points);
-                        }
                     }
                     else
                     {
                         game.guessedLetter += 1;
-                        currentplayer.points += game.rate;
+                        CurrentPlayer.points += game.rate;
                         updateLetterButtons();
                     }
 
@@ -224,15 +258,15 @@ namespace WheelOfFortune
                 {
                     game.guessedLetter = 0;
                     game.step = 1;
-                    lblInfo2.Text = currentplayer.name + ": " + game.hint[4];
-                    incrementPlayer(currentplayer);
+                    lblInfo2.Text = CurrentPlayer.name + ": " + game.hint[4];
+                    incrementPlayer();
                 }
                 else
                 {
-                    lblInfo2.Text = currentplayer.name + ": bought the vowel " + chosenButton.Text;
+                    lblInfo2.Text = CurrentPlayer.name + ": bought the vowel " + chosenButton.Text;
                     if (!buyingVowel)
                     {
-                        lblInfo2.Text = currentplayer.name + ": guessed the consonant " + chosenButton.Text;
+                        lblInfo2.Text = CurrentPlayer.name + ": guessed the consonant " + chosenButton.Text;
                         game.step = 3;
                     }
                 }
@@ -245,9 +279,10 @@ namespace WheelOfFortune
         }
         void UpdateAllPlayerPoints()
         {
-            lblScore1.Text = "$" + Convert.ToString(player1.points);
-            lblScore2.Text = "$" + Convert.ToString(player2.points);
-            lblScore3.Text = "$" + Convert.ToString(player3.points);
+            for (int ix = 0; ix < players.Count; ++ix)
+            {
+                playerPointLabels[ix].Text = string.Format("${0:N0}", players[ix].points);
+            }
         }
 
         public Bitmap rotateImage()
@@ -355,17 +390,17 @@ namespace WheelOfFortune
                 if (wheelofFortune.wheelState[wheelofFortune.state] == 0)
                 {
                     // Bankrupt
-                    lblInfo2.Text = currentplayer.name + ": " + game.hint[3];
-                    currentplayer.points = 0;
-                    incrementPlayer(currentplayer);
+                    lblInfo2.Text = CurrentPlayer.name + ": " + game.hint[3];
+                    CurrentPlayer.points = 0;
+                    incrementPlayer();
                     game.step = 1;
                     pctWheel.Enabled = true;
                 }
                 else if (wheelofFortune.wheelState[wheelofFortune.state] == -1)
                 {
                     // Lose turn
-                    lblInfo2.Text = currentplayer.name + ": " + game.hint[5];
-                    incrementPlayer(currentplayer);
+                    lblInfo2.Text = CurrentPlayer.name + ": " + game.hint[5];
+                    incrementPlayer();
                     game.step = 1;
                     pctWheel.Enabled = true;
                 }
@@ -381,60 +416,38 @@ namespace WheelOfFortune
 
         private void solvePuzzle()
         {
-            string guess = Interaction.InputBox(currentplayer.name + " would like to solve the Puzzle. Enter your guess.", "Solve the Puzzle", "(guess)");
+            string guess = Interaction.InputBox(CurrentPlayer.name + " would like to solve the Puzzle. Enter your guess.", "Solve the Puzzle", "(guess)");
             if (guess != "")
             {
                 if (guess.ToUpper() == secretWord.password.ToUpper())
                 {
-                    currentplayer.guessedWord = true;
+                    CurrentPlayer.guessedWord = true;
                 }
                 else
                 {
-                    lblInfo2.Text = currentplayer.name + ": failed to solve the puzzle.";
-                    incrementPlayer(currentplayer);
+                    lblInfo2.Text = CurrentPlayer.name + ": failed to solve the puzzle.";
+                    incrementPlayer();
                     pctWheel.Enabled = true;
                     game.step = 1;
                 }
             }
         }
 
-        private Player incrementPlayer(Player passedPlayer)
+        private void incrementPlayer()
         {
-            if (currentplayer == player1)
+            ++currentPlayerIx;
+            if (currentPlayerIx >= players.Count)
             {
-                currentplayer = player2;
-            }
-            else if (currentplayer == player2)
-            {
-                currentplayer = player3;
-            }
-            else if (currentplayer == player3)
-            {
-                currentplayer = player1;
+                currentPlayerIx = 0;
             }
             setPlayerColors();
-            return currentplayer;
         }
 
         private void setPlayerColors()
         {
-            if (currentplayer == player1)
+            for (int ix = 0; ix < players.Count; ++ix)
             {
-                lblPlayer1Name.ForeColor = Color.Red;
-                lblPlayer2Name.ForeColor = Color.Black;
-                lblPlayer3Name.ForeColor = Color.Black;
-            }
-            else if (currentplayer == player2)
-            {
-                lblPlayer1Name.ForeColor = Color.Black;
-                lblPlayer2Name.ForeColor = Color.Red;
-                lblPlayer3Name.ForeColor = Color.Black;
-            }
-            else if (currentplayer == player3)
-            {
-                lblPlayer1Name.ForeColor = Color.Black;
-                lblPlayer2Name.ForeColor = Color.Black;
-                lblPlayer3Name.ForeColor = Color.Red;
+                playerNameLabels[ix].ForeColor = (currentPlayerIx == ix ? Color.Red : Color.Black);
             }
         }
 
@@ -444,27 +457,29 @@ namespace WheelOfFortune
             switch (game.step)
             {
                 case 1:
-                    step1();
+                    step1(); // spin (all letters hidden)
                     break;
                 case 2:
-                    step2();
+                    step2(); // pick a letter (cannot spin)
                     break;
                 case 3:
-                    step3();
+                    step3(); // buy a vowel or spin (consonants hidden)
                     break;
             }
 
             if (secretWord.value > 0 && secretWord.value == secretWord.size)
             {
-                currentplayer.guessedWord = true;
+                CurrentPlayer.guessedWord = true;
                 secretWord.value = 0;
             }
 
-            if (currentplayer.guessedWord)
+            if (CurrentPlayer.guessedWord)
             {
                 gameTimer.Stop();
 
-                if (DialogResult.Yes == MessageBox.Show(currentplayer.name + " wins! You have won $" + currentplayer.points + ". Play Again? ", "Alert"
+                string msg = string.Format("{0} wins! You have won ${1} . Play Again? ",
+                    CurrentPlayer.name, CurrentPlayer.points);
+                if (DialogResult.Yes == MessageBox.Show(msg, "Alert"
                               , MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
                     System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
@@ -474,39 +489,7 @@ namespace WheelOfFortune
                 {
                     System.Windows.Forms.Application.Exit();
                 }
-                currentplayer.guessedWord = false;
-            }
-            if (false && player2.guessedWord)
-            {
-                gameTimer.Stop();
-
-                if (DialogResult.Yes == MessageBox.Show(player2.name + " wins! You have won $" + player2.points + ". Play Again? ", "Alert"
-                              , MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                {
-                    System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
-                    this.Close();
-                }
-                else
-                {
-                    System.Windows.Forms.Application.Exit();
-                }
-                player2.guessedWord = false;
-            }
-            if (false && player3.guessedWord)
-            {
-                gameTimer.Stop();
-
-                if (DialogResult.Yes == MessageBox.Show(player3.name + " wins! You have won $" + player3.points + ". Play Again? ", "Alert"
-                              , MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                {
-                    System.Diagnostics.Process.Start(Application.ExecutablePath); // to start new instance of application
-                    this.Close();
-                }
-                else
-                {
-                    System.Windows.Forms.Application.Exit();
-                }
-                player3.guessedWord = false;
+                CurrentPlayer.guessedWord = false;
             }
         }
 
@@ -534,7 +517,7 @@ namespace WheelOfFortune
         {
             if (game.step != 2)
             {
-                if (currentplayer.points < 125)
+                if (CurrentPlayer.points < 125)
                 {
                     game.step = 1;
                 }
@@ -546,7 +529,7 @@ namespace WheelOfFortune
 
             for (int i = 0; i < vowel.Length; i++)
             {
-                if (vowel[i].IsAccessible && currentplayer.points >= 125 && game.step > 1)
+                if (vowel[i].IsAccessible && CurrentPlayer.points >= 125 && game.step > 1)
                 {
                     vowel[i].Enabled = true;
                     vowel[i].Visible = true;
@@ -605,14 +588,35 @@ namespace WheelOfFortune
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.Player1Name = player1.name;
-            Properties.Settings.Default.Player2Name = player2.name;
-            Properties.Settings.Default.Player3Name = player3.name;
-            Properties.Settings.Default.Player1Points = player1.points;
-            Properties.Settings.Default.Player2Points = player2.points;
-            Properties.Settings.Default.Player3Points = player3.points;
-            Properties.Settings.Default.StartingPlayerName = currentplayer.name;
+            SavePlayerInfo();
+            Properties.Settings.Default.StartingPlayerName = CurrentPlayer.name;
             Properties.Settings.Default.Save();
+        }
+        private void SavePlayerInfo()
+        {
+            int ix = 0;
+            Properties.Settings.Default.Player1Name = players[ix].name;
+            Properties.Settings.Default.Player1Points = players[ix].points;
+            if (players.Count < 2) { return; }
+            ++ix;
+            Properties.Settings.Default.Player2Name = players[ix].name;
+            Properties.Settings.Default.Player2Points = players[ix].points;
+            if (players.Count < 3) { return; }
+            ++ix;
+            Properties.Settings.Default.Player3Name = players[ix].name;
+            Properties.Settings.Default.Player3Points = players[ix].points;
+            if (players.Count < 4) { return; }
+            ++ix;
+            Properties.Settings.Default.Player4Name = players[ix].name;
+            Properties.Settings.Default.Player4Points = players[ix].points;
+            if (players.Count < 5) { return; }
+            ++ix;
+            Properties.Settings.Default.Player5Name = players[ix].name;
+            Properties.Settings.Default.Player5Points = players[ix].points;
+            if (players.Count < 6) { return; }
+            ++ix;
+            Properties.Settings.Default.Player6Name = players[ix].name;
+            Properties.Settings.Default.Player6Points = players[ix].points;
         }
     }
 }

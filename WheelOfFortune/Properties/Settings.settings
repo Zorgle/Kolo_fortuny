@@ -23,5 +23,26 @@
     <Setting Name="StartingPlayerName" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Player4Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Player4</Value>
+    </Setting>
+    <Setting Name="Player5Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Player5</Value>
+    </Setting>
+    <Setting Name="Player6Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Player</Value>
+    </Setting>
+    <Setting Name="Player4Points" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Player5Points" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Player6Points" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="NumberOfPlayers" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
