@@ -221,7 +221,7 @@ namespace WheelOfFortune
                 }
                 else
                 {
-                    string prompt = string.Format("{0}: Play for ${1}", CurrentPlayer.name);
+                    string prompt = string.Format("{0}: Play for ${1}", CurrentPlayer.name, game.rate);
                     lblInfo.Text = prompt;
                 }
             }
