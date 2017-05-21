@@ -129,7 +129,7 @@ namespace WheelOfFortune
             gameTimer = new Timer();
             gameTimer.Interval = 100;
             gameTimer.Tick += gameTimer_Tick;
-            lblInfo.Text = game.hint[0];
+            Prompt();
 
             gameTimer.Start();
             updateLetterButtons();
@@ -208,7 +208,36 @@ namespace WheelOfFortune
             HandleGuess("'", system: true);
             HandleGuess("&", system: true);
             HandleGuess("-", system: true);
-            lblInfo.Text = game.hint[1];
+            Prompt();
+        }
+        private void Prompt()
+        {
+            if (game.step == 2)
+            {
+                if (CurrentPlayer.points >= 125)
+                {
+                    string prompt = string.Format("{0}: Play for ${1} (or buy a vowel for $125)", CurrentPlayer.name, game.rate);
+                    lblInfo.Text = prompt;
+                }
+                else
+                {
+                    string prompt = string.Format("{0}: Play for ${1}", CurrentPlayer.name);
+                    lblInfo.Text = prompt;
+                }
+            }
+            else
+            {
+                if (CurrentPlayer.points >= 125)
+                {
+                    string prompt = string.Format("{0}: Buy a vowel for $125 or spin the wheel", CurrentPlayer.name);
+                    lblInfo.Text = prompt;
+                }
+                else
+                {
+                    string prompt = string.Format("{0}: Spin the wheel", CurrentPlayer.name);
+                    lblInfo.Text = prompt;
+                }
+            }
         }
 
         bool isVowel(string ch)
@@ -228,7 +257,7 @@ namespace WheelOfFortune
         }
         private void HandleGuess(string guessLetter, bool system)
         {
-            Boolean ifExist = false;
+            int hits = 0;
             bool buyingVowel = isVowel(guessLetter);
             if (buyingVowel)
             {
@@ -242,7 +271,7 @@ namespace WheelOfFortune
                     secretWord.field[i].UseSystemPasswordChar = false;
                     if (buyingVowel)
                     {
-                        if (!ifExist)
+                        if (hits == 0)
                         {
                             updateLetterButtons();
                         }
@@ -254,27 +283,36 @@ namespace WheelOfFortune
                         updateLetterButtons();
                     }
 
-                    ifExist = true;
+                    ++hits;
                     secretWord.value++;
                 }
             }
 
-            letterMap[guessLetter] = (ifExist ? 1 : 2);
+            letterMap[guessLetter] = (hits == 0 ? 1 : 2);
             if (!system)
             {
-                if (!ifExist)
+                if (buyingVowel)
+                {
+                    string msg = string.Format("{0} bought the vowel {1} and got {2} match(es)",
+                        CurrentPlayer.name, guessLetter, hits);
+                    lblInfo2.Text = msg;
+                }
+                else
+                {
+                    string msg = string.Format("{0} guessed the consonant {1} and got {2} match(es)",
+                        CurrentPlayer.name, guessLetter, hits);
+                    lblInfo2.Text = msg;
+                }
+                if (hits == 0)
                 {
                     game.guessedLetter = 0;
                     game.step = 1;
-                    lblInfo2.Text = CurrentPlayer.name + ": " + game.hint[4];
                     incrementPlayer();
                 }
                 else
                 {
-                    lblInfo2.Text = CurrentPlayer.name + ": bought the vowel " + guessLetter;
                     if (!buyingVowel)
                     {
-                        lblInfo2.Text = CurrentPlayer.name + ": guessed the consonant " + guessLetter;
                         game.step = 3;
                     }
                 }
@@ -502,17 +540,15 @@ namespace WheelOfFortune
             {
                 button[i].Visible = false;
             }
-            lblInfo.Text = game.hint[0];
+            Prompt();
         }
 
         public void step2()
         {
             lblInfo.Visible = true;
-            lblInfo.Text = game.hint[2];
+            Prompt();
             updateLetterButtons();
             pctWheel.Enabled = false;
-
-
         }
         public void updateLetterButtons()
         {
@@ -559,7 +595,7 @@ namespace WheelOfFortune
 
         public void step3()
         {
-            lblInfo.Text = game.hint[1];
+            Prompt();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
