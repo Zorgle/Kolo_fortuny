@@ -30,8 +30,21 @@ namespace WheelOfFortune
         }
         private string RemoveUnhandledPunctuation(string phrase)
         {
-            phrase = phrase.Replace(".", "");
-            phrase = phrase.Replace("!", "");
+            List<char> illegalChars = new List<char>();
+            foreach (char ch in phrase)
+            {
+                // Check for stuff we allow
+                if (char.IsLetter(ch)) { continue; }
+                if (ch == ' ') { continue; }
+                if (ch == '\'') { continue; }
+                if (ch == '&') { continue; }
+                if (ch == '-') { continue; }
+                illegalChars.Add(ch);
+            }
+            foreach (char ch in illegalChars)
+            {
+                phrase = phrase.Replace(ch.ToString(), "");
+            }
             return phrase;
         }
         public int PuzzlesRemaining { get { return _puzzleSets.Sum(x => x.Value.Count); } }
