@@ -5,6 +5,7 @@ using Microsoft.VisualBasic;
 using PlayerList = System.Collections.Generic.List<WheelOfFortune.Player>;
 using PlayerNameLabelList = System.Collections.Generic.List<System.Windows.Forms.Label>;
 using PlayerPointsLabelList = System.Collections.Generic.List<System.Windows.Forms.Label>;
+using LetterMap = System.Collections.Generic.Dictionary<string, int>;
 
 namespace WheelOfFortune
 {
@@ -21,6 +22,7 @@ namespace WheelOfFortune
         Button[] button;
         Button[] vowel;
         Button[] consonant;
+        LetterMap letterMap = new LetterMap(); // 0=not,1=hit, 2=miss
 
         Game game;
         PlayerList players = new PlayerList();
@@ -52,7 +54,7 @@ namespace WheelOfFortune
             wheelTimer.Tick += wheelTimer_Tick;
 
 
-            button = new Button[28];
+            button = new Button[30];
             vowel = new Button[6];
             consonant = new Button[20];
 
@@ -84,6 +86,8 @@ namespace WheelOfFortune
             button[25] = btnZ;
             button[26] = btnSpace;
             button[27] = btnApostrophe;
+            button[28] = btnAmpersand;
+            button[29] = btnHyphen;
 
             vowel[0] = btnA;
             vowel[1] = btnE;
@@ -91,8 +95,6 @@ namespace WheelOfFortune
             vowel[3] = btnO;
             vowel[4] = btnU;
             vowel[5] = btnY;
-
-
 
             consonant[0] = btnB;
             consonant[1] = btnC;
@@ -115,11 +117,11 @@ namespace WheelOfFortune
             consonant[18] = btnX;
             consonant[19] = btnZ;
 
-            for (int i = 0; i < 26; i++)
+            for (int i = 0; i < button.Length; i++)
             {
-                button[i].IsAccessible = true;    //already chosen
                 button[i].Enabled = true;         //active flag
                 button[i].Visible = false;        //visibility flag
+                letterMap[button[i].Text] = 0; // not guessed
             }
 
             game = new Game();
@@ -202,10 +204,10 @@ namespace WheelOfFortune
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            handleButton(btnSpace, e);
-            handleButton(btnApostrophe, e);
-            handleButton(btnAmpersand, e);
-            handleButton(btnHyphen, e);
+            HandleGuess(" ", system: true);
+            HandleGuess("'", system: true);
+            HandleGuess("&", system: true);
+            HandleGuess("-", system: true);
             lblInfo.Text = game.hint[1];
         }
 
@@ -213,26 +215,31 @@ namespace WheelOfFortune
         {
             return ch == "A" || ch == "E" || ch == "I" || ch == "O" || ch == "U" || ch == "Y";
         }
+        private static bool eqstr(string s1, string s2)
+        {
+            return string.Compare(s1, s2, ignoreCase: true) == 0;
+        }
         private Player CurrentPlayer { get { return players[currentPlayerIx]; } }
         private void handleButton(object sender, EventArgs e)
         {
-            Boolean ifExist = false;
             Button chosenButton = (Button)sender;
-            bool buyingVowel = isVowel(chosenButton.Text);
+            string guessLetter = chosenButton.Text;
+            HandleGuess(guessLetter, system: false);
+        }
+        private void HandleGuess(string guessLetter, bool system)
+        {
+            Boolean ifExist = false;
+            bool buyingVowel = isVowel(guessLetter);
             if (buyingVowel)
             {
                 CurrentPlayer.points -= 125;
             }
 
-            bool wasAccessible = chosenButton.IsAccessible;
-
             for (int i = 0; i < secretWord.size; i++)
             {
-                if ((secretWord.field[i].Text.ToUpper()).Equals((chosenButton.Text.ToUpper())))
+                if (eqstr(secretWord.field[i].Text, guessLetter))
                 {
                     secretWord.field[i].UseSystemPasswordChar = false;
-                    chosenButton.IsAccessible = false;
-
                     if (buyingVowel)
                     {
                         if (!ifExist)
@@ -252,7 +259,8 @@ namespace WheelOfFortune
                 }
             }
 
-            if (wasAccessible)
+            letterMap[guessLetter] = (ifExist ? 1 : 2);
+            if (!system)
             {
                 if (!ifExist)
                 {
@@ -263,10 +271,10 @@ namespace WheelOfFortune
                 }
                 else
                 {
-                    lblInfo2.Text = CurrentPlayer.name + ": bought the vowel " + chosenButton.Text;
+                    lblInfo2.Text = CurrentPlayer.name + ": bought the vowel " + guessLetter;
                     if (!buyingVowel)
                     {
-                        lblInfo2.Text = CurrentPlayer.name + ": guessed the consonant " + chosenButton.Text;
+                        lblInfo2.Text = CurrentPlayer.name + ": guessed the consonant " + guessLetter;
                         game.step = 3;
                     }
                 }
@@ -275,7 +283,6 @@ namespace WheelOfFortune
             UpdateAllPlayerPoints();
             updateLetterButtons();
             pctWheel.Enabled = true;
-
         }
         void UpdateAllPlayerPoints()
         {
@@ -379,13 +386,7 @@ namespace WheelOfFortune
 
                 wheelIsMoved = false;
 
-                for (int i = 0; i < button.Length; i++)
-                {
-                    if (button[i].IsAccessible)
-                    {
-                        button[i].Visible = true;
-                    }
-                }
+                updateLetterButtons();
 
                 if (wheelofFortune.wheelState[wheelofFortune.state] == 0)
                 {
@@ -529,28 +530,28 @@ namespace WheelOfFortune
 
             for (int i = 0; i < vowel.Length; i++)
             {
-                if (vowel[i].IsAccessible && CurrentPlayer.points >= 125 && game.step > 1)
+                int state = letterMap[vowel[i].Text];
+                if (state == 0) // not guessed
                 {
-                    vowel[i].Enabled = true;
                     vowel[i].Visible = true;
+                    vowel[i].Enabled = (CurrentPlayer.points >= 125);
                 }
-                else
+                else // guessed
                 {
-                    vowel[i].Enabled = false;
                     vowel[i].Visible = false;
                 }
             }
 
             for (int i = 0; i < consonant.Length; i++)
             {
-                if (consonant[i].IsAccessible && game.step > 1)
+                int state = letterMap[consonant[i].Text];
+                if (state == 0) // not guessed
                 {
-                    consonant[i].Enabled = (game.step == 2);
                     consonant[i].Visible = true;
+                    consonant[i].Enabled = (game.step == 2);
                 }
-                else
+                else if (state == 1) // guessed
                 {
-                    consonant[i].Enabled = false;
                     consonant[i].Visible = false;
                 }
             }
