@@ -391,7 +391,7 @@ namespace WheelOfFortune
                 {
                     // Bankrupt
                     lblInfo2.Text = CurrentPlayer.name + ": " + game.hint[3];
-                    CurrentPlayer.points = 0;
+                    CurrentPlayer.points -= (CurrentPlayer.points / 2);
                     incrementPlayer();
                     game.step = 1;
                     pctWheel.Enabled = true;
