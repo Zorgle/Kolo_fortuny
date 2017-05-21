@@ -149,31 +149,14 @@ namespace WheelOfFortune
             var player = new Player(name) { points = points };
             players.Add(player);
         }
-        private void LoadPlayers()
-        {
-            int numPlayers = Properties.Settings.Default.NumberOfPlayers;
-            if (numPlayers < 1) { numPlayers = 1; }
-            if (numPlayers > 6) { numPlayers = 6; }
-
-            AddPlayer(Properties.Settings.Default.Player1Name, Properties.Settings.Default.Player1Points);
-            if (numPlayers < 2) { return; }
-            AddPlayer(Properties.Settings.Default.Player2Name, Properties.Settings.Default.Player2Points);
-            if (numPlayers < 3) { return; }
-            AddPlayer(Properties.Settings.Default.Player3Name, Properties.Settings.Default.Player3Points);
-            if (numPlayers < 4) { return; }
-            AddPlayer(Properties.Settings.Default.Player4Name, Properties.Settings.Default.Player4Points);
-            if (numPlayers < 5) { return; }
-            AddPlayer(Properties.Settings.Default.Player5Name, Properties.Settings.Default.Player5Points);
-            if (numPlayers < 6) { return; }
-            AddPlayer(Properties.Settings.Default.Player6Name, Properties.Settings.Default.Player6Points);
-        }
         private void FigureOutWhoseTurn()
         {
             // Figure out starting player turn
             currentPlayerIx = 0;
             for (int ix = 1; ix < players.Count; ++ix)
             {
-                if (players[ix].name == Properties.Settings.Default.StartingPlayerName)
+                string startingPlayerName = PersistenceHelper.SettingsFactory.Get().GetString("StartingPlayerName", "");
+                if (players[ix].name == startingPlayerName)
                 {
                     currentPlayerIx = ix;
                     break;
@@ -626,34 +609,37 @@ namespace WheelOfFortune
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             SavePlayerInfo();
-            Properties.Settings.Default.StartingPlayerName = CurrentPlayer.name;
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.StartingPlayerName = CurrentPlayer.name;
+            //Properties.Settings.Default.Save();
+        }
+        private void LoadPlayers()
+        {
+            var settings = PersistenceHelper.SettingsFactory.Get();
+            int numPlayers = settings.GetInt("NumberPlayers", 2);
+            if (numPlayers < 1) { numPlayers = 1; }
+            if (numPlayers > 6) { numPlayers = 6; }
+            for (int ix = 0; ix < numPlayers; ++ix)
+            {
+                string nameKey = string.Format("Player{0}.Name", ix);
+                string defName = string.Format("Player{0}", ix+1);
+                var name = settings.GetString(nameKey, defName);
+                string pointsKey = string.Format("Player{0}.Points", ix);
+                var points = settings.GetInt(pointsKey, 0);
+                AddPlayer(name, points);
+            }
         }
         private void SavePlayerInfo()
         {
-            int ix = 0;
-            Properties.Settings.Default.Player1Name = players[ix].name;
-            Properties.Settings.Default.Player1Points = players[ix].points;
-            if (players.Count < 2) { return; }
-            ++ix;
-            Properties.Settings.Default.Player2Name = players[ix].name;
-            Properties.Settings.Default.Player2Points = players[ix].points;
-            if (players.Count < 3) { return; }
-            ++ix;
-            Properties.Settings.Default.Player3Name = players[ix].name;
-            Properties.Settings.Default.Player3Points = players[ix].points;
-            if (players.Count < 4) { return; }
-            ++ix;
-            Properties.Settings.Default.Player4Name = players[ix].name;
-            Properties.Settings.Default.Player4Points = players[ix].points;
-            if (players.Count < 5) { return; }
-            ++ix;
-            Properties.Settings.Default.Player5Name = players[ix].name;
-            Properties.Settings.Default.Player5Points = players[ix].points;
-            if (players.Count < 6) { return; }
-            ++ix;
-            Properties.Settings.Default.Player6Name = players[ix].name;
-            Properties.Settings.Default.Player6Points = players[ix].points;
+            var settings = PersistenceHelper.SettingsFactory.Get();
+            settings.SetInt("PlayerCount", players.Count);
+            for (int ix = 0; ix < players.Count; ++ix)
+            {
+                string nameKey = string.Format("Player{0}.Name", ix);
+                settings.SetString(nameKey, players[ix].name);
+                string pointsKey = string.Format("Player{0}.Points", ix);
+                settings.SetInt(pointsKey, players[ix].points);
+            }
+            settings.Save();
         }
     }
 }
