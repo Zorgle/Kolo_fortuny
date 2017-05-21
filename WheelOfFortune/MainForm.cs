@@ -609,8 +609,6 @@ namespace WheelOfFortune
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             SavePlayerInfo();
-            //Properties.Settings.Default.StartingPlayerName = CurrentPlayer.name;
-            //Properties.Settings.Default.Save();
         }
         private void LoadPlayers()
         {
